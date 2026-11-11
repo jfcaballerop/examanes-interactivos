@@ -1,735 +1,782 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="es">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Examen 1: Writing & Listening - Unit 2 (Richmond 5º Primaria)</title>
     <style>
-        :root {
-            --primary: #2b5797;
-            --secondary: #00a4ef;
-            --bg: #f4f6f9;
-            --card: #ffffff;
-            --text: #333333;
-            --success: #2e7d32;
-            --error: #c62828;
-        }
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--bg);
-            color: var(--text);
-            margin: 0;
-            padding: 0;
-            line-height: 1.6;
-        }
-        header {
-            position: sticky;
-            top: 0;
-            background: var(--primary);
-            color: white;
-            padding: 15px 20px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
-            z-index: 1000;
-        }
-        header h1 {
-            margin: 0;
-            font-size: 1.2rem;
-        }
-        .timer {
-            font-size: 1.2rem;
-            font-weight: bold;
-            background: rgba(255,255,255,0.2);
-            padding: 5px 15px;
-            border-radius: 20px;
-        }
-        .container {
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 0 20px;
-        }
-        .instructions {
-            background: #e3f2fd;
-            border-left: 5px solid var(--secondary);
-            padding: 15px;
-            border-radius: 4px;
-            margin-bottom: 25px;
-        }
-        .section-header {
-            background: var(--primary);
-            color: white;
-            padding: 10px 15px;
-            border-radius: 6px;
-            margin: 30px 0 15px 0;
-        }
-        .question-card {
-            background: var(--card);
-            border-radius: 8px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
-        }
-        .question-card p.q-text {
-            font-weight: 600;
-            font-size: 1.05rem;
-            margin-top: 0;
-        }
-        .options-group {
-            display: flex;
-            flex-direction: column;
-            gap: 10px;
-        }
-        label.option-label {
-            display: flex;
-            align-items: center;
-            padding: 10px 15px;
-            background: #f8f9fa;
-            border: 1px solid #e0e0e0;
-            border-radius: 6px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-        label.option-label:hover {
-            background: #e9ecef;
-        }
-        input[type="radio"] {
-            margin-right: 12px;
-        }
-        input[type="text"], textarea {
-            width: 100%;
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 1rem;
-            box-sizing: border-box;
-        }
-        textarea {
-            resize: vertical;
-            min-height: 100px;
-        }
-        button.submit-btn {
-            display: block;
-            width: 100%;
-            padding: 15px;
-            background: var(--success);
-            color: white;
-            border: none;
-            border-radius: 8px;
-            font-size: 1.2rem;
-            font-weight: bold;
-            cursor: pointer;
-            margin: 40px 0;
-            transition: background 0.3s;
-        }
-        button.submit-btn:hover {
-            background: #1b5e20;
-        }
-        .results-box {
-            display: none;
-            background: white;
-            border-radius: 8px;
-            padding: 25px;
-            margin-bottom: 30px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
-        }
-        .feedback {
-            margin-top: 10px;
-            padding: 10px;
-            border-radius: 6px;
-            font-size: 0.95rem;
-        }
-        .feedback.correct {
-            background: #e8f5e9;
-            color: var(--success);
-            border-left: 4px solid var(--success);
-        }
-        .feedback.incorrect {
-            background: #ffebee;
-            color: var(--error);
-            border-left: 4px solid var(--error);
-        }
+      :root {
+        --primary: #2b5797;
+        --secondary: #00a4ef;
+        --bg: #f4f6f9;
+        --card: #ffffff;
+        --text: #333333;
+        --success: #2e7d32;
+        --error: #c62828;
+      }
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        background-color: var(--bg);
+        color: var(--text);
+        margin: 0;
+        padding: 0;
+        line-height: 1.6;
+      }
+      header {
+        position: sticky;
+        top: 0;
+        background: var(--primary);
+        color: white;
+        padding: 15px 20px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        z-index: 1000;
+      }
+      header h1 {
+        margin: 0;
+        font-size: 1.2rem;
+      }
+      .timer {
+        font-size: 1.2rem;
+        font-weight: bold;
+        background: rgba(255, 255, 255, 0.2);
+        padding: 5px 15px;
+        border-radius: 20px;
+      }
+      .container {
+        max-width: 900px;
+        margin: 20px auto;
+        padding: 0 20px;
+      }
+      .instructions {
+        background: #e3f2fd;
+        border-left: 5px solid var(--secondary);
+        padding: 15px;
+        border-radius: 4px;
+        margin-bottom: 25px;
+      }
+      .back-link {
+        display: inline-block;
+        margin-bottom: 16px;
+        padding: 8px 12px;
+        border: 1px solid var(--primary);
+        border-radius: 6px;
+        color: var(--primary);
+        font-size: 0.9rem;
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .back-link:hover,
+      .back-link:focus-visible {
+        background: rgba(43, 87, 151, 0.1);
+      }
+      .section-header {
+        background: var(--primary);
+        color: white;
+        padding: 10px 15px;
+        border-radius: 6px;
+        margin: 30px 0 15px 0;
+      }
+      .question-card {
+        background: var(--card);
+        border-radius: 8px;
+        padding: 20px;
+        margin-bottom: 20px;
+        box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+      }
+      .question-card p.q-text {
+        font-weight: 600;
+        font-size: 1.05rem;
+        margin-top: 0;
+      }
+      .options-group {
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+      }
+      label.option-label {
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        background: #f8f9fa;
+        border: 1px solid #e0e0e0;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: background 0.2s;
+      }
+      label.option-label:hover {
+        background: #e9ecef;
+      }
+      input[type="radio"] {
+        margin-right: 12px;
+      }
+      input[type="text"] {
+        width: 100%;
+        padding: 10px;
+        border: 1px solid #ccc;
+        border-radius: 6px;
+        font-size: 1rem;
+        box-sizing: border-box;
+      }
+      button.submit-btn {
+        display: block;
+        width: 100%;
+        padding: 15px;
+        background: var(--success);
+        color: white;
+        border: none;
+        border-radius: 8px;
+        font-size: 1.2rem;
+        font-weight: bold;
+        cursor: pointer;
+        margin: 40px 0;
+        transition: background 0.3s;
+      }
+      button.submit-btn:hover {
+        background: #1b5e20;
+      }
+      .results-box {
+        display: none;
+        background: white;
+        border-radius: 8px;
+        padding: 25px;
+        margin-bottom: 30px;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+      }
+      .feedback {
+        margin-top: 10px;
+        padding: 10px;
+        border-radius: 6px;
+        font-size: 0.95rem;
+      }
+      .feedback.correct {
+        background: #e8f5e9;
+        color: var(--success);
+        border-left: 4px solid var(--success);
+      }
+      .feedback.incorrect {
+        background: #ffebee;
+        color: var(--error);
+        border-left: 4px solid var(--error);
+      }
     </style>
-</head>
-<body>
-
-<header>
-    <h1>Examen 1: Writing & Listening (Richmond - Unit 2)</h1>
-    <div class="timer" id="timer">⏱️ 00:00</div>
-</header>
-
-<div class="container">
-    <div class="instructions">
+  </head>
+  <body>
+    <header>
+      <h1>Examen 1: Writing & Listening (Richmond - Unit 2)</h1>
+      <div class="timer" id="timer">⏱️ 00:00</div>
+    </header>
+    <div class="container">
+      <div class="instructions">
+        <a class="back-link" href="../index.html">← Volver al índice</a><br />
         <strong>📌 Instrucciones para Álvaro:</strong>
         <ul>
-            <li>Examen oficial del <strong>17 de Noviembre</strong>.</li>
-            <li>Consta de 50 preguntas divididas entre Listening Script Comprehension, Listening Skills, Writing Grammar & Syntax y Redacción Libre.</li>
-            <li>Utiliza un cuaderno en papel como borrador para redactar tus oraciones antes de poner la respuesta final.</li>
-            <li>Al finalizar, pulsa <strong>"Entregar y Corregir Examen"</strong> para obtener tu nota sobre 10 y ver las explicaciones.</li>
+          <li>
+            Examen de preparación para la prueba del
+            <strong>17 de Noviembre</strong>.
+          </li>
+          <li>
+            50 preguntas interactivas de Listening, Writing, Sintaxis y
+            Vocabulario (Unit 2: "Listen to your art").
+          </li>
+          <li>
+            Utiliza un cuaderno en papel como borrador para redactar oraciones
+            antes de poner la respuesta final.
+          </li>
+          <li>
+            Al finalizar, pulsa
+            <strong>"Entregar y Corregir Examen"</strong> para obtener tu nota
+            sobre 10 y ver las explicaciones.
+          </li>
         </ul>
-    </div>
-
-    <form id="quizForm">
-        <!-- SECCIÓN 1 -->
+      </div>
+      <form id="quizForm">
         <div class="section-header">
-            <h2>Bloque 1: Listening & Audio Script Comprehension (Preguntas 1 a 25 - Nivel Fácil/Medio)</h2>
+          <h2>
+            Bloque 1: Listening & Audio Script Comprehension (Preguntas 1 a 25)
+          </h2>
         </div>
         <div id="block1"></div>
-
-        <!-- SECCIÓN 2 -->
         <div class="section-header">
-            <h2>Bloque 2: Writing, Composition & Syntax (Preguntas 26 a 50 - Nivel Medio/Alto)</h2>
+          <h2>Bloque 2: Writing, Composition & Syntax (Preguntas 26 a 50)</h2>
         </div>
         <div id="block2"></div>
-
-        <button type="button" class="submit-btn" onclick="evaluateQuiz()">📄 Entregar y Corregir Examen</button>
-    </form>
-
-    <div class="results-box" id="resultsBox">
+        <button type="button" class="submit-btn" onclick="evaluateQuiz()">
+          📄 Entregar y Corregir Examen
+        </button>
+      </form>
+      <div class="results-box" id="resultsBox">
         <h2>🎉 Resultados de Álvaro</h2>
-        <p id="scoreText" style="font-size: 1.3rem; font-weight: bold;"></p>
+        <p id="scoreText" style="font-size: 1.3rem; font-weight: bold"></p>
         <p id="timeText"></p>
-        <hr>
+        <hr />
         <h3>Desglose de Respuestas y Explicaciones Pedagógicas:</h3>
         <div id="feedbackContainer"></div>
+      </div>
     </div>
-</div>
-
-<script>
-    // Timer
-    let seconds = 0;
-    const timerElem = document.getElementById('timer');
-    const timerInterval = setInterval(() => {
+    <script>
+      let seconds = 0;
+      let quizEvaluated = false;
+      const timerElem = document.getElementById("timer");
+      const timerInterval = setInterval(() => {
         seconds++;
-        const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
-        const secs = (seconds % 60).toString().padStart(2, '0');
+        const mins = Math.floor(seconds / 60)
+          .toString()
+          .padStart(2, "0");
+        const secs = (seconds % 60).toString().padStart(2, "0");
         timerElem.textContent = `⏱️ ${mins}:${secs}`;
-    }, 1000);
+      }, 1000);
 
-    // Question Bank
-    const questionsBlock1 = [
+      const questionsBlock1 = [
         {
-            id: 1,
-            q: "Listening Script 1: In the dialogue, Sarah says: 'Look at that painting! In the foreground, there is a small dog.' Where is the dog?",
-            type: "radio",
-            options: ["At the top corner", "In the main front part of the picture", "Behind the trees", "Far away in the mountains"],
-            answer: "In the main front part of the picture",
-            explain: "'Foreground' significa primer plano (la parte delantera del cuadro)."
+          id: 1,
+          q: "Listening Script 1: Sarah says: 'In the foreground, there is a small dog.' Where is the dog?",
+          type: "radio",
+          options: [
+            "At the top corner",
+            "In the main front part of the picture",
+            "Behind the trees",
+            "Far away",
+          ],
+          answer: "In the main front part of the picture",
+          explain: "'Foreground' significa primer plano.",
         },
         {
-            id: 2,
-            q: "Listening Script 1: Tom replies: 'Yes, but the background is very dark.' What does 'background' mean?",
-            type: "radio",
-            options: ["El marco del cuadro", "El primer plano", "El fondo de la imagen", "La firma del artista"],
-            answer: "El fondo de la imagen",
-            explain: "'Background' es el fondo de una pintura o fotografía."
+          id: 2,
+          q: "Listening Script 1: Tom says: 'The background is dark.' What is 'background'?",
+          type: "radio",
+          options: [
+            "El marco",
+            "El primer plano",
+            "El fondo de la imagen",
+            "La firma",
+          ],
+          answer: "El fondo de la imagen",
+          explain: "'Background' es el fondo.",
         },
         {
-            id: 3,
-            q: "Listening Script 2: 'I think abstract art is more creative than traditional painting.' What is being compared?",
-            type: "radio",
-            options: ["Abstract art and traditional painting", "Two traditional artists", "Bright colors and dark colors", "Sculptures and music"],
-            answer: "Abstract art and traditional painting",
-            explain: "El hablante compara el arte abstracto con la pintura tradicional usando 'more creative than'."
+          id: 3,
+          q: "Listening Script 2: 'I think abstract art is more creative than traditional painting.' What is compared?",
+          type: "radio",
+          options: [
+            "Abstract art and traditional painting",
+            "Two artists",
+            "Colors",
+            "Sculptures",
+          ],
+          answer: "Abstract art and traditional painting",
+          explain: "Compara arte abstracto y pintura tradicional.",
         },
         {
-            id: 4,
-            q: "Listening Script 2: Which word is used to describe abstract art in the audio?",
-            type: "radio",
-            options: ["Boring", "Creative", "Horrible", "Silly"],
-            answer: "Creative",
-            explain: "En la frase se especifica 'more creative'."
+          id: 4,
+          q: "Listening Script 2: Which adjective describes abstract art?",
+          type: "radio",
+          options: ["Boring", "Creative", "Horrible", "Silly"],
+          answer: "Creative",
+          explain: "Indica 'more creative'.",
         },
         {
-            id: 5,
-            q: "Listening Key Words: If a speaker says 'The light colors make me feel happy', what type of colors is he talking about?",
-            type: "radio",
-            options: ["Colores oscuros", "Colores claros/luminosos", "Colores aburridos", "Colores caros"],
-            answer: "Colores claros/luminosos",
-            explain: "'Light' en contexto artístico significa claro o luminoso."
+          id: 5,
+          q: "Listening Key Words: What does 'light colors' mean?",
+          type: "radio",
+          options: [
+            "Colores oscuros",
+            "Colores claros/luminosos",
+            "Colores feos",
+            "Colores caros",
+          ],
+          answer: "Colores claros/luminosos",
+          explain: "'Light' significa claro o luminoso.",
         },
         {
-            id: 6,
-            q: "Listening Key Words: What is the opposite of 'bright' in visual descriptions?",
-            type: "radio",
-            options: ["Dark", "Creative", "Modern", "Expensive"],
-            answer: "Dark",
-            explain: "El opuesto de brillante/claro ('bright') es oscuro ('dark')."
+          id: 6,
+          q: "Listening Key Words: Opposite of 'bright'?",
+          type: "radio",
+          options: ["Dark", "Creative", "Modern", "Expensive"],
+          answer: "Dark",
+          explain: "Opuesto de bright es dark.",
         },
         {
-            id: 7,
-            q: "Escribe en inglés la palabra para decir 'primer plano' en una obra de arte:",
-            type: "text",
-            answer: "foreground",
-            explain: "Primer plano se escribe 'foreground'."
+          id: 7,
+          q: "Escribe en inglés 'primer plano':",
+          type: "text",
+          answer: "foreground",
+          explain: "Se escribe 'foreground'.",
         },
         {
-            id: 8,
-            q: "Escribe en inglés la palabra para decir 'fondo' en un cuadro:",
-            type: "text",
-            answer: "background",
-            explain: "Fondo se escribe 'background'."
+          id: 8,
+          q: "Escribe en inglés 'fondo':",
+          type: "text",
+          answer: "background",
+          explain: "Se escribe 'background'.",
         },
         {
-            id: 9,
-            q: "Listening Script 3: 'This portrait was painted in 1850, so it is traditional.' Is it modern or traditional?",
-            type: "radio",
-            options: ["Modern", "Traditional", "Futuristic", "Abstract"],
-            answer: "Traditional",
-            explain: "El audio indica explícitamente que es 'traditional'."
+          id: 9,
+          q: "Listening Script 3: 'This portrait was painted in 1850, so it is traditional.' Is it modern or traditional?",
+          type: "radio",
+          options: ["Modern", "Traditional", "Futuristic", "Abstract"],
+          answer: "Traditional",
+          explain: "Indica que es tradicional.",
         },
         {
-            id: 10,
-            q: "Listening Script 3: Why does the speaker say it is traditional?",
-            type: "radio",
-            options: ["Because it was painted recently", "Because it was painted in 1850", "Because it uses bright neon colors", "Because it has no background"],
-            answer: "Because it was painted in 1850",
-            explain: "Justifica que es tradicional debido a la fecha (1850)."
+          id: 10,
+          q: "Listening Script 3: Why is it traditional?",
+          type: "radio",
+          options: [
+            "Painted recently",
+            "Painted in 1850",
+            "Uses neon colors",
+            "No background",
+          ],
+          answer: "Painted in 1850",
+          explain: "Lo justifica por la fecha.",
         },
         {
-            id: 11,
-            q: "Listening Comprehension: Mark says: 'This museum ticket is £25! That is very expensive.' What is Mark complaining about?",
-            type: "radio",
-            options: ["The museum is boring", "The ticket is cheap", "The ticket costs a lot of money", "The museum is closed"],
-            answer: "The ticket costs a lot of money",
-            explain: "'Expensive' significa caro (que cuesta mucho dinero)."
+          id: 11,
+          q: "Listening: Mark says: 'This ticket is £25! That is very expensive.' What does he mean?",
+          type: "radio",
+          options: [
+            "It's boring",
+            "It's cheap",
+            "It costs a lot of money",
+            "It's closed",
+          ],
+          answer: "It costs a lot of money",
+          explain: "Expensive es caro.",
         },
         {
-            id: 12,
-            q: "Listening Comprehension: What is the opposite of 'expensive'?",
-            type: "radio",
-            options: ["Silly", "Cheap", "Weird", "Modern"],
-            answer: "Cheap",
-            explain: "El opuesto de 'expensive' (caro) es 'cheap' (barato)."
+          id: 12,
+          q: "Opposite of 'expensive':",
+          type: "radio",
+          options: ["Silly", "Cheap", "Weird", "Modern"],
+          answer: "Cheap",
+          explain: "Opuesto de caro es cheap.",
         },
         {
-            id: 13,
-            q: "Listening Practice: 'I prefer the sculpture on the left because it is more modern.' Which sculpture does the speaker like more?",
-            type: "radio",
-            options: ["The sculpture on the right", "The sculpture on the left", "Both sculptures equally", "Neither sculpture"],
-            answer: "The sculpture on the left",
-            explain: "Expresa preferencia clara por la escultura de la izquierda ('on the left')."
+          id: 13,
+          q: "Listening: 'I prefer the sculpture on the left because it is more modern.' Which one?",
+          type: "radio",
+          options: ["On the right", "On the left", "Both", "Neither"],
+          answer: "On the left",
+          explain: "Prefiere la de la izquierda.",
         },
         {
-            id: 14,
-            q: "Listening Practice: Complete the sentence with the word heard in audio: 'The colors in this picture are very ______ (brillantes).'",
-            type: "text",
-            answer: "bright",
-            explain: "Brillantes en inglés es 'bright'."
+          id: 14,
+          q: "Complete with audio word: 'The colors are very ______ (brillantes).'",
+          type: "text",
+          answer: "bright",
+          explain: "Brillantes = bright.",
         },
         {
-            id: 15,
-            q: "Listening Detail: 'In the center of the canvas, we can see a tall tree.' Where is the tree?",
-            type: "radio",
-            options: ["In the background", "In the center", "At the bottom left", "Outside the canvas"],
-            answer: "In the center",
-            explain: "El audio especifica 'In the center of the canvas'."
+          id: 15,
+          q: "Listening Detail: 'In the center of the canvas, there is a tree.' Where is it?",
+          type: "radio",
+          options: ["Background", "In the center", "Bottom left", "Outside"],
+          answer: "In the center",
+          explain: "En el centro.",
         },
         {
-            id: 16,
-            q: "Listening Vocabulary: What does 'weird' mean when describing a sculpture?",
-            type: "radio",
-            options: ["Hermosa", "Rara o extraña", "Gigante", "Antigua"],
-            answer: "Rara o extraña",
-            explain: "'Weird' significa raro, extraño o estrambótico."
+          id: 16,
+          q: "Vocabulary: What does 'weird' mean?",
+          type: "radio",
+          options: ["Hermosa", "Rara o extraña", "Gigante", "Antigua"],
+          answer: "Rara o extraña",
+          explain: "Weird = raro/extraño.",
         },
         {
-            id: 17,
-            q: "Listening Vocabulary: If someone says 'That statue looks silly', what are they saying?",
-            type: "radio",
-            options: ["Que es elegante", "Que parece absurda o tonta", "Que es realista", "Que es muy cara"],
-            answer: "Que parece absurda o tonta",
-            explain: "'Silly' significa tonto, absurdo o poco serio."
+          id: 17,
+          q: "Vocabulary: 'That statue looks silly.' Meaning?",
+          type: "radio",
+          options: ["Elegante", "Absurda o tonta", "Realista", "Cara"],
+          answer: "Absurda o tonta",
+          explain: "Silly = tonto/absurdo.",
         },
         {
-            id: 18,
-            q: "Listening Audio Marker: Which connector signals a contrast in 'I like the foreground, BUT the background is too dark'?",
-            type: "radio",
-            options: ["and", "because", "but", "so"],
-            answer: "but",
-            explain: "'But' (pero) es el conector que indica contraste."
+          id: 18,
+          q: "Connector for contrast: 'I like the foreground, ______ the background is dark.'",
+          type: "radio",
+          options: ["and", "because", "but", "so"],
+          answer: "but",
+          explain: "But marca contraste.",
         },
         {
-            id: 19,
-            q: "Listening Audio Marker: Which connector shows a reason in 'I prefer this painting BECAUSE it is more colorful'?",
-            type: "radio",
-            options: ["because", "but", "then", "or"],
-            answer: "because",
-            explain: "'Because' (porque) introduce una causa o razón."
+          id: 19,
+          q: "Connector for reason: 'I prefer this painting ______ it is colorful.'",
+          type: "radio",
+          options: ["because", "but", "then", "or"],
+          answer: "because",
+          explain: "Because introduce la razón.",
         },
         {
-            id: 20,
-            q: "Escribe la palabra opuesta a 'traditional':",
-            type: "text",
-            answer: "modern",
-            explain: "El opuesto de 'traditional' es 'modern'."
+          id: 20,
+          q: "Opposite of 'traditional':",
+          type: "text",
+          answer: "modern",
+          explain: "Opuesto = modern.",
         },
         {
-            id: 21,
-            q: "Listening Question Type: 'What do you think of this painting?' What is the speaker asking for?",
-            type: "radio",
-            options: ["A price", "An opinion", "The date", "The location"],
-            answer: "An opinion",
-            explain: "'What do you think of...?' pide una opinión."
+          id: 21,
+          q: "Question type: 'What do you think of this painting?' asks for:",
+          type: "radio",
+          options: ["Price", "Opinion", "Date", "Location"],
+          answer: "Opinion",
+          explain: "Pide una opinión.",
         },
         {
-            id: 22,
-            q: "Listening Script 4: 'The exhibition is better than last year.' What is the comparative form of 'good' used here?",
-            type: "radio",
-            options: ["Gooder", "More good", "Better", "Best"],
-            answer: "Better",
-            explain: "El comparativo irregular de 'good' es 'better'."
+          id: 22,
+          q: "Comparative of 'good':",
+          type: "radio",
+          options: ["Gooder", "More good", "Better", "Best"],
+          answer: "Better",
+          explain: "Comparativo de good = better.",
         },
         {
-            id: 23,
-            q: "Listening Script 4: What is the comparative form of 'bad'?",
-            type: "radio",
-            options: ["Badder", "Worse", "Worst", "More bad"],
-            answer: "Worse",
-            explain: "El comparativo irregular de 'bad' es 'worse'."
+          id: 23,
+          q: "Comparative of 'bad':",
+          type: "radio",
+          options: ["Badder", "Worse", "Worst", "More bad"],
+          answer: "Worse",
+          explain: "Comparativo de bad = worse.",
         },
         {
-            id: 24,
-            q: "Listening True/False: 'The artist used dark blue for the sky to show night.' True or False?",
-            type: "radio",
-            options: ["True", "False"],
-            answer: "True",
-            explain: "Verdadero: el azul oscuro ('dark blue') representa la noche."
+          id: 24,
+          q: "True/False: 'Dark blue shows night.'",
+          type: "radio",
+          options: ["True", "False"],
+          answer: "True",
+          explain: "Verdadero.",
         },
         {
-            id: 25,
-            q: "Listening True/False: 'Modern paintings are always cheaper than traditional ones.' True or False?",
-            type: "radio",
-            options: ["True", "False"],
-            answer: "False",
-            explain: "Falso: no siempre las pinturas modernas son más baratas."
-        }
-    ];
+          id: 25,
+          q: "True/False: 'Modern paintings are always cheaper.'",
+          type: "radio",
+          options: ["True", "False"],
+          answer: "False",
+          explain: "Falso.",
+        },
+      ];
 
-    const questionsBlock2 = [
+      const questionsBlock2 = [
         {
-            id: 26,
-            q: "Writing Syntax: Order the words to form a correct sentence: 'painting / is / more / This / colorful / that / than / one.'",
-            type: "radio",
-            options: [
-                "This painting is more colorful than that one.",
-                "This painting more colorful is than that one.",
-                "More colorful this painting is than that one.",
-                "That one is painting more colorful than this."
-            ],
-            answer: "This painting is more colorful than that one.",
-            explain: "Sujeto (This painting) + verbo (is) + comparativo (more colorful) + than + objeto (that one)."
+          id: 26,
+          q: "Order words: 'painting / is / more / This / colorful / that / than / one.'",
+          type: "radio",
+          options: [
+            "This painting is more colorful than that one.",
+            "This painting more colorful is than that one.",
+            "More colorful this painting is than that one.",
+            "That one is painting more colorful than this.",
+          ],
+          answer: "This painting is more colorful than that one.",
+          explain: "Sintaxis comparativa correcta.",
         },
         {
-            id: 27,
-            q: "Writing Grammar: Correct the spelling mistake in this sentence: 'The background is darkerr than the foreground.' Write the correct comparative word:",
-            type: "text",
-            answer: "darker",
-            explain: "Darker lleva solo una 'r' al final (dark + er)."
+          id: 27,
+          q: "Correct spelling: 'The background is darkerr than...' Correct word:",
+          type: "text",
+          answer: "darker",
+          explain: "Darker lleva una sola r.",
         },
         {
-            id: 28,
-            q: "Writing Punctuation: Which sentence has correct capitalization and punctuation?",
-            type: "radio",
-            options: [
-                "in the foreground, i can see a creative sculpture.",
-                "In the foreground, I can see a creative sculpture.",
-                "In the foreground i can see a creative sculpture",
-                "in the foreground I can see a creative sculpture."
-            ],
-            answer: "In the foreground, I can see a creative sculpture.",
-            explain: "Inicia con mayúscula, la primera persona 'I' siempre va en mayúscula y termina en punto."
+          id: 28,
+          q: "Punctuation check: Which sentence is correct?",
+          type: "radio",
+          options: [
+            "in the foreground, i can see a creative sculpture.",
+            "In the foreground, I can see a creative sculpture.",
+            "In the foreground i can see a creative sculpture",
+            "in the foreground I can see a creative sculpture.",
+          ],
+          answer: "In the foreground, I can see a creative sculpture.",
+          explain: "Mayúscula inicial, I en mayúscula y punto.",
         },
         {
-            id: 29,
-            q: "Writing Connectors: Combine these two sentences: 'I like the painting. The colors are too dark.'",
-            type: "radio",
-            options: [
-                "I like the painting because the colors are too dark.",
-                "I like the painting, but the colors are too dark.",
-                "I like the painting so the colors are too dark.",
-                "I like the painting and the colors are too dark."
-            ],
-            answer: "I like the painting, but the colors are too dark.",
-            explain: "'But' indica contraste entre gustar el cuadro y que los colores sean demasiado oscuros."
+          id: 29,
+          q: "Combine: 'I like the painting. The colors are too dark.'",
+          type: "radio",
+          options: [
+            "I like the painting because the colors are too dark.",
+            "I like the painting, but the colors are too dark.",
+            "I like the painting so the colors are too dark.",
+            "I like the painting and the colors are too dark.",
+          ],
+          answer: "I like the painting, but the colors are too dark.",
+          explain: "But expresa el contraste.",
         },
         {
-            id: 30,
-            q: "Writing Connectors: Complete: 'I prefer modern art ______ it is more exciting.'",
-            type: "radio",
-            options: ["but", "because", "so", "than"],
-            answer: "because",
-            explain: "'Because' introduce la razón por la que prefiere el arte moderno."
+          id: 30,
+          q: "Complete: 'I prefer modern art ______ it is exciting.'",
+          type: "radio",
+          options: ["but", "because", "so", "than"],
+          answer: "because",
+          explain: "Because para dar motivos.",
         },
         {
-            id: 31,
-            q: "Writing Adjectives: Change the short adjective 'big' into comparative form for a sentence:",
-            type: "text",
-            answer: "bigger",
-            explain: "Big dobla la consonante final al ser consonante-vocal-consonante: bigger."
+          id: 31,
+          q: "Comparative of 'big':",
+          type: "text",
+          answer: "bigger",
+          explain: "Big -> bigger.",
         },
         {
-            id: 32,
-            q: "Writing Adjectives: Change 'pretty' into comparative form for a writing exercise:",
-            type: "text",
-            answer: "prettier",
-            explain: "Los adjetivos terminados en 'y' cambian a 'ier': prettier."
+          id: 32,
+          q: "Comparative of 'pretty':",
+          type: "text",
+          answer: "prettier",
+          explain: "Pretty -> prettier.",
         },
         {
-            id: 33,
-            q: "Writing Review Structure: What should you include in the INTRODUCTION of an art review?",
-            type: "radio",
-            options: [
-                "Your final score and goodbye",
-                "The title of the artwork and the artist's name",
-                "Only negative points about the painting",
-                "A list of museum ticket prices"
-            ],
-            answer: "The title of the artwork and the artist's name",
-            explain: "La introducción debe presentar la obra y su creador."
+          id: 33,
+          q: "Review structure: What goes in the INTRODUCTION?",
+          type: "radio",
+          options: [
+            "Final score",
+            "Artwork title and artist name",
+            "Negative points",
+            "Ticket prices",
+          ],
+          answer: "Artwork title and artist name",
+          explain: "Presenta el título y artista.",
         },
         {
-            id: 34,
-            q: "Writing Review Structure: What should you describe in the BODY paragraph of an art review?",
-            type: "radio",
-            options: [
-                "What you ate at the museum cafeteria",
-                "The elements in the foreground, background and colors used",
-                "The history of the museum building",
-                "The bus route to get to the gallery"
-            ],
-            answer: "The elements in the foreground, background and colors used",
-            explain: "El cuerpo del texto describe la composición visual (foreground, background, colores)."
+          id: 34,
+          q: "Review structure: What goes in the BODY?",
+          type: "radio",
+          options: [
+            "Food eaten",
+            "Foreground, background and colors",
+            "Museum history",
+            "Bus route",
+          ],
+          answer: "Foreground, background and colors",
+          explain: "Describe la composición visual.",
         },
         {
-            id: 35,
-            q: "Writing Review Structure: How should you end your art review in the CONCLUSION?",
-            type: "radio",
-            options: [
-                "Giving your personal opinion and recommendation",
-                "Describing the foreground again",
-                "Asking the teacher for the grade",
-                "Listing irregular verbs"
-            ],
-            answer: "Giving your personal opinion and recommendation",
-            explain: "La conclusión resume tu opinión personal y recomendación."
+          id: 35,
+          q: "Review structure: What goes in the CONCLUSION?",
+          type: "radio",
+          options: [
+            "Personal opinion and recommendation",
+            "Foreground again",
+            "Grade request",
+            "Verb list",
+          ],
+          answer: "Personal opinion and recommendation",
+          explain: "Resume opinión y recomendación.",
         },
         {
-            id: 36,
-            q: "Writing Practice: Translate to English: 'Este cuadro es más caro que aquella estatua.'",
-            type: "radio",
-            options: [
-                "This painting is more expensive than that statue.",
-                "This painting is cheaper than that statue.",
-                "This painting is expensiver than that statue.",
-                "This painting is most expensive that statue."
-            ],
-            answer: "This painting is more expensive than that statue.",
-            explain: "Expensive es adjetivo largo: 'more expensive than'."
+          id: 36,
+          q: "Translate: 'Este cuadro es más caro que aquella estatua.'",
+          type: "radio",
+          options: [
+            "This painting is more expensive than that statue.",
+            "This painting is cheaper than that statue.",
+            "This painting is expensiver than that statue.",
+            "This painting is most expensive that statue.",
+          ],
+          answer: "This painting is more expensive than that statue.",
+          explain: "More expensive than.",
         },
         {
-            id: 37,
-            q: "Writing Practice: Translate to English: 'En el primer plano, hay un perro pequeño.'",
-            type: "radio",
-            options: [
-                "In the background, there is a small dog.",
-                "In the foreground, there is a small dog.",
-                "On the foreground, has a small dog.",
-                "In foreground, there are a small dog."
-            ],
-            answer: "In the foreground, there is a small dog.",
-            explain: "Se usa 'In the foreground' y 'there is' para singular."
+          id: 37,
+          q: "Translate: 'En el primer plano, hay un perro pequeño.'",
+          type: "radio",
+          options: [
+            "In the background, there is a small dog.",
+            "In the foreground, there is a small dog.",
+            "On the foreground, has a small dog.",
+            "In foreground, there are a small dog.",
+          ],
+          answer: "In the foreground, there is a small dog.",
+          explain: "In the foreground, there is...",
         },
         {
-            id: 38,
-            q: "Writing Practice: Translate to English: 'En el fondo, las montañas son oscuras.'",
-            type: "radio",
-            options: [
-                "In the background, the mountains are dark.",
-                "In the foreground, the mountains are bright.",
-                "At background, mountains are dark.",
-                "In the background, the mountains is dark."
-            ],
-            answer: "In the background, the mountains are dark.",
-            explain: "Se usa 'In the background' y 'are' para plural (mountains)."
+          id: 38,
+          q: "Translate: 'En el fondo, las montañas son oscuras.'",
+          type: "radio",
+          options: [
+            "In the background, the mountains are dark.",
+            "In the foreground, the mountains are bright.",
+            "At background, mountains are dark.",
+            "In the background, the mountains is dark.",
+          ],
+          answer: "In the background, the mountains are dark.",
+          explain: "In the background, ... are dark.",
         },
         {
-            id: 39,
-            q: "Writing Error Analysis: Find the error in: 'She thinks classical art is gooder than modern art.' Write the correct word for 'gooder':",
-            type: "text",
-            answer: "better",
-            explain: "Gooder no existe. El comparativo de 'good' es 'better'."
+          id: 39,
+          q: "Error check: 'Classical art is gooder than modern art.' Correct word:",
+          type: "text",
+          answer: "better",
+          explain: "Gooder no existe, se dice better.",
         },
         {
-            id: 40,
-            q: "Writing Error Analysis: Find the error in: 'This sculpture is the most weird in the gallery.' What is the standard comparative/superlative choice here?",
-            type: "radio",
-            options: ["the weirdest", "more weirdest", "weirdest than", "most weirder"],
-            answer: "the weirdest",
-            explain: "Weird es adjetivo corto de 1 sílaba, forma el superlativo añadiendo '-est': the weirdest."
+          id: 40,
+          q: "Error check: 'This sculpture is the most weird in the gallery.' Standard choice:",
+          type: "radio",
+          options: [
+            "the weirdest",
+            "more weirdest",
+            "weirdest than",
+            "most weirder",
+          ],
+          answer: "the weirdest",
+          explain: "Weird -> the weirdest.",
         },
         {
-            id: 41,
-            q: "Writing Paragraph Builder: Which paragraph starter is best for describing location in a painting?",
-            type: "radio",
-            options: [
-                "Yesterday I bought a pencil...",
-                "Looking closely at the picture, in the foreground we can spot...",
-                "In my opinion, 1850 was a good year...",
-                "Maths is harder than art..."
-            ],
-            answer: "Looking closely at the picture, in the foreground we can spot...",
-            explain: "Es una frase de apertura ideal para la descripción visual."
+          id: 41,
+          q: "Paragraph starter for visual description:",
+          type: "radio",
+          options: [
+            "Yesterday I bought a pencil...",
+            "Looking closely at the picture, in the foreground we can spot...",
+            "In my opinion, 1850 was a good year...",
+            "Maths is harder than art...",
+          ],
+          answer:
+            "Looking closely at the picture, in the foreground we can spot...",
+          explain: "Frase de apertura formal.",
         },
         {
-            id: 42,
-            q: "Writing Vocabulary Usage: Complete with the right adjective: 'I don't like this portrait. The face looks really ______ (absurda/tonta).'",
-            type: "text",
-            answer: "silly",
-            explain: "Silly significa absurda o tonta."
+          id: 42,
+          q: "Complete: 'The face looks really ______ (absurda/tonta).'",
+          type: "text",
+          answer: "silly",
+          explain: "Silly.",
         },
         {
-            id: 43,
-            q: "Writing Vocabulary Usage: Complete with the right adjective: 'This museum has very ______ (antiguas/tradicionales) paintings from the 17th century.'",
-            type: "text",
-            answer: "traditional",
-            explain: "Traditional significa tradicional o antiguo en este contexto."
+          id: 43,
+          q: "Complete: 'Paintings from the 17th century are ______ (tradicionales).'",
+          type: "text",
+          answer: "traditional",
+          explain: "Traditional.",
         },
         {
-            id: 44,
-            q: "Writing Practice (50-80 words check): Write a short sentence giving your opinion about a painting using 'I prefer' and 'because':",
-            type: "text",
-            answer: "I prefer this painting because it is more colorful.",
-            explain: "Cualquier oración bien estructurada con 'I prefer... because...' es válida. Ejemplo: I prefer this painting because it is more colorful."
+          id: 44,
+          q: "Complete opinion sentence: 'I prefer this painting ______ it is colorful.'",
+          type: "text",
+          answer: "because",
+          explain: "I prefer... because...",
         },
         {
-            id: 45,
-            q: "Writing Grammar: What is the comparative form of 'creative'?",
-            type: "text",
-            answer: "more creative",
-            explain: "Creative es adjetivo largo: 'more creative'."
+          id: 45,
+          q: "Comparative of 'creative':",
+          type: "text",
+          answer: "more creative",
+          explain: "More creative.",
         },
         {
-            id: 46,
-            q: "Writing Grammar: What is the comparative form of 'horrible'?",
-            type: "text",
-            answer: "more horrible",
-            explain: "Horrible es adjetivo largo: 'more horrible'."
+          id: 46,
+          q: "Comparative of 'horrible':",
+          type: "text",
+          answer: "more horrible",
+          explain: "More horrible.",
         },
         {
-            id: 47,
-            q: "Writing Cohesion: Complete the sequence: 'First, I looked at the foreground. ______, I noticed the dark background.'",
-            type: "radio",
-            options: ["Then", "Because", "Than", "But"],
-            answer: "Then",
-            explain: "'Then' (luego/después) marca la secuencia temporal de observación."
+          id: 47,
+          q: "Cohesion: 'First, I looked at the foreground. ______, I noticed the background.'",
+          type: "radio",
+          options: ["Then", "Because", "Than", "But"],
+          answer: "Then",
+          explain: "Then marca la secuencia.",
         },
         {
-            id: 48,
-            q: "Writing Cohesion: Which word connects contrasting opinions? 'The sculpture is small, ______ it is very detailed.'",
-            type: "radio",
-            options: ["but", "because", "so", "or"],
-            answer: "but",
-            explain: "'But' conecta dos aspectos contrapuestos (pequeña pero detallada)."
+          id: 48,
+          q: "Cohesion: 'The sculpture is small, ______ detailed.'",
+          type: "radio",
+          options: ["but", "because", "so", "or"],
+          answer: "but",
+          explain: "But para el contraste.",
         },
         {
-            id: 49,
-            q: "Writing Proofreading: Choose the sentence without ANY spelling or grammar mistakes:",
-            type: "radio",
-            options: [
-                "The background is more darker than the foreground.",
-                "The background is darker than the foreground.",
-                "The background is darker that the foreground.",
-                "The background is darker then the foreground."
-            ],
-            answer: "The background is darker than the foreground.",
-            explain: "No se combina 'more' con '-er', y se usa 'than' (no 'that' ni 'then')."
+          id: 49,
+          q: "Choose correct sentence:",
+          type: "radio",
+          options: [
+            "The background is more darker than the foreground.",
+            "The background is darker than the foreground.",
+            "The background is darker that the foreground.",
+            "The background is darker then the foreground.",
+          ],
+          answer: "The background is darker than the foreground.",
+          explain: "Darker than es la única correcta.",
         },
         {
-            id: 50,
-            q: "Writing Final Self-Check: In a Richmond writing test, if you write 'beautifull' instead of 'beautiful', what happens?",
-            type: "radio",
-            options: [
-                "You get extra points",
-                "Spelling errors reduce your overall mark",
-                "It doesn't matter at all",
-                "The teacher ignores it"
-            ],
-            answer: "Spelling errors reduce your overall mark",
-            explain: "En las pruebas de Richmond, los errores de spelling restan puntuación."
-        }
-    ];
+          id: 50,
+          q: "In Richmond tests, what happens with spelling mistakes?",
+          type: "radio",
+          options: [
+            "Extra points",
+            "Reduce overall mark",
+            "Doesn't matter",
+            "Teacher ignores",
+          ],
+          answer: "Reduce overall mark",
+          explain: "Los errores de spelling restan puntuación.",
+        },
+      ];
 
-    function renderQuestions(questions, containerId) {
+      function renderQuestions(questions, containerId) {
         const container = document.getElementById(containerId);
-        questions.forEach(q => {
-            const card = document.createElement('div');
-            card.className = 'question-card';
-            card.id = `q_card_${q.id}`;
-
-            let html = `<p class="q-text">${q.id}. ${q.q}</p>`;
-
-            if (q.type === 'radio') {
-                html += `<div class="options-group">`;
-                q.options.forEach(opt => {
-                    html += `
-                        <label class="option-label">
-                            <input type="radio" name="q_${q.id}" value="${opt}">
-                            ${opt}
-                        </label>
-                    `;
-                });
-                html += `</div>`;
-            } else if (q.type === 'text') {
-                html += `<input type="text" name="q_${q.id}" placeholder="Escribe tu respuesta aquí en inglés...">`;
-            }
-
-            card.innerHTML = html;
-            container.appendChild(card);
+        questions.forEach((q) => {
+          const card = document.createElement("div");
+          card.className = "question-card";
+          let html = `<p class="q-text">${q.id}. ${q.q}</p>`;
+          if (q.type === "radio") {
+            html += `<div class="options-group">`;
+            q.options.forEach((opt) => {
+              html += `<label class="option-label"><input type="radio" name="q_${q.id}" value="${opt}">${opt}</label>`;
+            });
+            html += `</div>`;
+          } else if (q.type === "text") {
+            html += `<input type="text" name="q_${q.id}" placeholder="Escribe tu respuesta aquí en inglés...">`;
+          }
+          card.innerHTML = html;
+          container.appendChild(card);
         });
-    }
+      }
 
-    renderQuestions(questionsBlock1, 'block1');
-    renderQuestions(questionsBlock2, 'block2');
+      renderQuestions(questionsBlock1, "block1");
+      renderQuestions(questionsBlock2, "block2");
 
-    function evaluateQuiz() {
+      function evaluateQuiz() {
+        if (quizEvaluated) return;
+        quizEvaluated = true;
         clearInterval(timerInterval);
         const allQuestions = [...questionsBlock1, ...questionsBlock2];
         let score = 0;
-        const feedbackContainer = document.getElementById('feedbackContainer');
-        feedbackContainer.innerHTML = '';
-
-        allQuestions.forEach(q => {
-            const field = document.forms['quizForm'][`q_${q.id}`];
-            let userAns = '';
-
-            if (q.type === 'radio') {
-                userAns = field.value || '';
-            } else if (q.type === 'text') {
-                userAns = field.value.trim();
-            }
-
-            const isCorrect = userAns.toLowerCase() === q.answer.toLowerCase();
-            if (isCorrect) score++;
-
-            const fbDiv = document.createElement('div');
-            fbDiv.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
-            fbDiv.innerHTML = `
-                <strong>Pregunta ${q.id}:</strong> ${q.q}<br>
-                <em>Tu respuesta:</em> ${userAns || '(Sin responder)'}<br>
-                <em>Respuesta correcta:</em> <strong>${q.answer}</strong><br>
-                💡 <em>Explicación:</em> ${q.explain}
-            `;
-            feedbackContainer.appendChild(fbDiv);
+        const feedbackContainer = document.getElementById("feedbackContainer");
+        feedbackContainer.innerHTML = "";
+        allQuestions.forEach((q) => {
+          const field = document.forms["quizForm"][`q_${q.id}`];
+          let userAns =
+            q.type === "radio" ? field.value || "" : field.value.trim();
+          const isCorrect = userAns.toLowerCase() === q.answer.toLowerCase();
+          if (isCorrect) score++;
+          const fbDiv = document.createElement("div");
+          fbDiv.className = `feedback ${isCorrect ? "correct" : "incorrect"}`;
+          fbDiv.innerHTML = `<strong>Pregunta ${q.id}:</strong> ${q.q}<br><em>Tu respuesta:</em> ${userAns || "(Sin responder)"}<br><em>Correcta:</em> <strong>${q.answer}</strong><br>💡 <em>Explicación:</em> ${q.explain}`;
+          feedbackContainer.appendChild(fbDiv);
         });
-
         const mark10 = ((score / 50) * 10).toFixed(2);
-        document.getElementById('scoreText').textContent = `Nota Final: ${mark10} / 10 (${score} aciertos de 50 preguntas)`;
-        document.getElementById('timeText').textContent = `Tiempo transcurrido: ${timerElem.textContent.replace('⏱️ ', '')}`;
-        document.getElementById('resultsBox').style.display = 'block';
-        window.scrollTo({ top: document.getElementById('resultsBox').offsetTop - 70, behavior: 'smooth' });
-    }
-</script>
-</body>
+        document.getElementById("scoreText").textContent =
+          `Nota Final: ${mark10} / 10 (${score} aciertos de 50)`;
+        document.getElementById("timeText").textContent =
+          `Tiempo transcurrido: ${timerElem.textContent.replace("⏱️ ", "")}`;
+        document.getElementById("resultsBox").style.display = "block";
+        document.querySelectorAll("#quizForm input").forEach((input) => {
+          input.disabled = true;
+        });
+        const submitButton = document.querySelector(".submit-btn");
+        submitButton.textContent = "REINICIAR";
+        submitButton.onclick = () => window.location.reload();
+        window.scrollTo({
+          top: document.getElementById("resultsBox").offsetTop - 70,
+          behavior: "smooth",
+        });
+      }
+    </script>
+  </body>
 </html>
