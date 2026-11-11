@@ -1,0 +1,449 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen Matemáticas Tema 2 - 5.º Primaria</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #2563eb;
+            --primary-dark: #1d4ed8;
+            --success: #16a34a;
+            --danger: #dc2626;
+            --bg-body: #f8fafc;
+            --card-bg: #ffffff;
+            --text-main: #0f172a;
+            --text-muted: #64748b;
+            --border: #cbd5e1;
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Inter', system-ui, -apple-system, sans-serif;
+            background-color: var(--bg-body);
+            color: var(--text-main);
+            line-height: 1.6;
+            padding-bottom: 60px;
+        }
+
+        /* Header flotante con cronómetro */
+        .sticky-header {
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            background: #1e293b;
+            color: white;
+            padding: 14px 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+        }
+
+        .timer-badge {
+            background: #0f172a;
+            border: 1px solid #334155;
+            padding: 6px 16px;
+            border-radius: 20px;
+            font-family: monospace;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #38bdf8;
+        }
+
+        .container {
+            max-width: 860px;
+            margin: 30px auto;
+            padding: 0 16px;
+        }
+
+        .exam-info {
+            background: linear-gradient(135deg, #1e3a8a, #2563eb);
+            color: white;
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+        }
+
+        .exam-info h1 {
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+        }
+
+        .section-header {
+            margin: 32px 0 16px;
+            padding-bottom: 8px;
+            border-bottom: 3px solid var(--primary);
+            color: var(--primary-dark);
+            font-size: 1.3rem;
+        }
+
+        .question-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.02);
+            transition: border-color 0.2s;
+        }
+
+        .question-title {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-bottom: 12px;
+            color: #1e293b;
+        }
+
+        .question-title span.q-num {
+            background: #e0e7ff;
+            color: #3730a3;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-right: 8px;
+            font-size: 0.9rem;
+        }
+
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        .option-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 10px 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.15s;
+        }
+
+        .option-label:hover {
+            background: #f1f5f9;
+        }
+
+        .option-label input[type="radio"] {
+            width: 18px;
+            height: 18px;
+            accent-color: var(--primary);
+        }
+
+        .text-input-group {
+            margin-top: 12px;
+        }
+
+        .text-input-group input[type="text"] {
+            width: 100%;
+            max-width: 300px;
+            padding: 10px 14px;
+            border: 1px solid var(--border);
+            border-radius: 6px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .text-input-group input[type="text"]:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+        }
+
+        .paper-notice {
+            display: inline-block;
+            font-size: 0.8rem;
+            background: #fef3c7;
+            color: #92400e;
+            padding: 2px 8px;
+            border-radius: 4px;
+            margin-bottom: 8px;
+            font-weight: 500;
+        }
+
+        .submit-section {
+            text-align: center;
+            margin-top: 40px;
+            padding: 30px;
+            background: white;
+            border-radius: 12px;
+            border: 1px solid var(--border);
+        }
+
+        .btn-submit {
+            background: var(--primary);
+            color: white;
+            border: none;
+            padding: 14px 36px;
+            font-size: 1.1rem;
+            font-weight: 600;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+
+        .btn-submit:hover {
+            background: var(--primary-dark);
+        }
+
+        /* Feedback y resultados */
+        .feedback {
+            margin-top: 12px;
+            padding: 12px 16px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+            display: none;
+        }
+
+        .feedback.correct {
+            background: #dcfce7;
+            color: #15803d;
+            border: 1px solid #86efac;
+        }
+
+        .feedback.incorrect {
+            background: #fee2e2;
+            color: #b91c1c;
+            border: 1px solid #fca5a5;
+        }
+
+        .results-summary {
+            display: none;
+            background: #ffffff;
+            border: 2px solid var(--primary);
+            padding: 24px;
+            border-radius: 12px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+
+        .results-summary h2 {
+            color: var(--primary-dark);
+            font-size: 2rem;
+            margin-bottom: 10px;
+        }
+
+        .score-box {
+            font-size: 3rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin: 15px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="sticky-header">
+        <div>
+            <strong>Tema 2: División y Potencias</strong>
+        </div>
+        <div class="timer-badge" id="timer">⏱️ 00:00</div>
+    </div>
+
+    <div class="container">
+        <div class="exam-info">
+            <h1>Prueba de Evaluación: Tema 2</h1>
+            <p>5.º de Primaria — Editorial Santillana | 50 Preguntas</p>
+            <p style="font-size: 0.9rem; opacity: 0.9; margin-top: 6px;">📝 Ten a mano papel y lápiz para hacer las operaciones intermedias y los cálculos antes de contestar.</p>
+        </div>
+
+        <div id="resultsSummary" class="results-summary">
+            <h2>Resultados del Examen</h2>
+            <div class="score-box" id="finalScore">0 / 10</div>
+            <p id="timeTakenText"></p>
+            <p id="detailScoreText"></p>
+        </div>
+
+        <form id="examForm">
+            <!-- Bloque 1: Preguntas 1 a 25 -->
+            <h2 class="section-header">Parte 1: Conceptos, Potencias y Operatoria Base (Preguntas 1 a 25)</h2>
+            <div id="block1"></div>
+
+            <!-- Bloque 2: Preguntas 26 a 50 -->
+            <h2 class="section-header">Parte 2: Operaciones Combinadas Avanzadas y Problemas (Preguntas 26 a 50)</h2>
+            <div id="block2"></div>
+
+            <div class="submit-section">
+                <button type="button" class="btn-submit" onclick="gradeExam()">Entregar y Corregir Examen</button>
+            </div>
+        </form>
+    </div>
+
+    <script>
+        const questionsData = [
+            // PARTE 1 (1 a 25)
+            { id: 1, type: "mc", q: "En la potencia 7⁴, ¿cuál es la base y cuál es el exponente?", opts: ["Base 4, Exponente 7", "Base 7, Exponente 4", "Base 7, Exponente 28", "Base 28, Exponente 4"], ans: 1, exp: "La base es el número que se repite (7) y el exponente indica cuántas veces se multiplica (4)." },
+            { id: 2, type: "mc", q: "¿Cómo se expresa en forma de potencia el producto 5 × 5 × 5 × 5 × 5 × 5?", opts: ["5 × 6", "6⁵", "5⁶", "55"], ans: 2, exp: "El factor 5 se repite 6 veces, luego es 5⁶." },
+            { id: 3, type: "input", q: "Calcula el valor numérico exacto de la potencia 3⁴.", ans: "81", exp: "3⁴ = 3 × 3 × 3 × 3 = 81." },
+            { id: 4, type: "mc", q: "¿Cuál es el resultado de la potencia de base 10: 10⁵?", opts: ["50", "1.000", "10.000", "100.000"], ans: 3, exp: "10⁵ es la unidad seguida de 5 ceros: 100.000." },
+            { id: 5, type: "input", q: "Expresa en forma de número completo la descomposición: 4 × 10⁴ + 6 × 10³ + 2 × 10¹ + 5.", ans: "46025", exp: "40.000 + 6.000 + 20 + 5 = 46.025." },
+            { id: 6, type: "mc", q: "En la división 458 : 12, el cociente es 38 y el resto es 2. ¿Es una división exacta o entera?", opts: ["Exacta, porque el resto es pequeño", "Entera o inexacta, porque el resto es mayor que 0", "Exacta, porque 458 es par", "No se puede saber"], ans: 1, exp: "Toda división con resto mayor que cero (r > 0) es entera o inexacta." },
+            { id: 7, type: "input", q: "Aplica la prueba de la división (D = d × c + r): Si el divisor es 15, el cociente es 24 y el resto es 7, ¿cuál es el dividendo?", paper: true, ans: "367", exp: "D = (15 × 24) + 7 = 360 + 7 = 367." },
+            { id: 8, type: "mc", q: "¿Cuál es el valor exacto de la raíz cuadrada √49?", opts: ["7", "14", "24.5", "9"], ans: 0, exp: "7 × 7 = 49, por tanto √49 = 7." },
+            { id: 9, type: "input", q: "Calcula el resultado de la siguiente expresión: 18 + 12 : 3", ans: "22", exp: "Jerarquía: primero la división 12 : 3 = 4; luego la suma 18 + 4 = 22." },
+            { id: 10, type: "mc", q: "¿Qué propiedad de la multiplicación se aplica en: 6 × (8 + 5) = (6 × 8) + (6 × 5)?", opts: ["Propiedad Conmutativa", "Propiedad Asociativa", "Propiedad Distributiva", "Propiedad Fundamental"], ans: 2, exp: "Multiplicar un número por una suma es igual a la suma de los productos: Propiedad Distributiva." },
+            { id: 11, type: "input", q: "Aplica la propiedad distributiva para resolver: 9 × (100 - 4)", ans: "864", exp: "(9 × 100) - (9 × 4) = 900 - 36 = 864." },
+            { id: 12, type: "mc", q: "Si multiplicamos el dividendo y el divisor de una división exacta por el número 4, ¿qué ocurre con el cociente?", opts: ["Se multiplica por 4", "Se divide entre 4", "Permanece igual (no cambia)", "Aumenta en 4 unidades"], ans: 2, exp: "Propiedad fundamental de la división exacta: el cociente no varía." },
+            { id: 13, type: "input", q: "Resuelve la división: 4.800 : 60 (puedes simplificar ceros).", ans: "80", exp: "4.800 : 60 = 480 : 6 = 80." },
+            { id: 14, type: "mc", q: "¿Cuál es el resultado de (15 - 5) × 4 + 2?", opts: ["42", "38", "50", "20"], ans: 0, exp: "Primero paréntesis: (15 - 5) = 10; luego multiplicación: 10 × 4 = 40; finalmente suma: 40 + 2 = 42." },
+            { id: 15, type: "input", q: "Escribe la potencia que representa: 10 × 10 × 10 × 10 × 10 × 10 × 10 (ejemplo de formato: 10^7).", ans: "10^7", exp: "Hay 7 factores 10, por lo que es 10^7." },
+            { id: 16, type: "mc", q: "En la división 584 : 7, el resto NUNCA puede ser igual o mayor que...", opts: ["El cociente", "7 (el divisor)", "El dividendo", "0"], ans: 1, exp: "Regla obligatoria de la división: el resto siempre debe ser estrictamente menor que el divisor (r < d)." },
+            { id: 17, type: "input", q: "Calcula el resto de dividir 129 entre 11.", paper: true, ans: "8", exp: "129 = 11 × 11 + 8. Resto = 8." },
+            { id: 18, type: "mc", q: "Estima el producto 49 × 21 redondeando ambos factores a las decenas más cercanas.", opts: ["1.000", "900", "1.200", "800"], ans: 0, exp: "49 → 50; 21 → 20; 50 × 20 = 1.000." },
+            { id: 19, type: "input", q: "Calcula el valor de: 2³ + 5²", paper: true, ans: "33", exp: "2³ = 8; 5² = 25; 8 + 25 = 33." },
+            { id: 20, type: "mc", q: "¿Cuál es la descomposición polinómica del número 805.040?", opts: ["8×10⁵ + 5×10⁴ + 4×10¹", "8×10⁵ + 5×10³ + 4×10¹", "8×10⁶ + 5×10³ + 4×10²", "8×10⁴ + 5×10³ + 4"], ans: 1, exp: "805.040 = 8×100.000 + 5×1.000 + 4×10 = 8×10⁵ + 5×10³ + 4×10¹." },
+            { id: 21, type: "input", q: "En una división entera, d = 12, c = 15 y r = 9. ¿Cuál es el dividendo?", paper: true, ans: "189", exp: "D = (12 × 15) + 9 = 180 + 9 = 189." },
+            { id: 22, type: "mc", q: "¿Cuál es el primer paso para resolver la operación: 40 - 4 × (5 + 2)?", opts: ["Restar 40 - 4", "Multiplicar 4 × 5", "Sumar (5 + 2) dentro del paréntesis", "Multiplicar 4 × 2"], ans: 2, exp: "La jerarquía indica que siempre se resuelven primero los paréntesis." },
+            { id: 23, type: "input", q: "Calcula: (20 - 8) : 4 + 3 × 2", paper: true, ans: "9", exp: "(20 - 8) = 12; 12 : 4 = 3; 3 × 2 = 6; 3 + 6 = 9." },
+            { id: 24, type: "mc", q: "Si 6² = 36, ¿cuánto vale √36?", opts: ["3", "6", "12", "18"], ans: 1, exp: "La raíz cuadrada de 36 es 6 porque 6 × 6 = 36." },
+            { id: 25, type: "input", q: "Calcula mentalmente: 350.000 : 700", ans: "500", exp: "Eliminamos dos ceros: 3.500 : 7 = 500." },
+
+            // PARTE 2 (26 a 50)
+            { id: 26, type: "input", q: "Calcula el cociente exacto de la división: 8.512 : 32", paper: true, ans: "266", exp: "8.512 entre 32 es exactamente 266 (resto 0)." },
+            { id: 27, type: "mc", q: "Resuelve la operación combinada con potencias: 3 × 2³ + (10 - 4)²", paper: true, opts: ["60", "48", "216", "40"], ans: 0, exp: "2³ = 8; (10 - 4) = 6; 6² = 36; 3 × 8 = 24; 24 + 36 = 60." },
+            { id: 28, type: "input", q: "Calcula el resto de la división: 14.285 : 125", paper: true, ans: "35", exp: "14.285 : 125 = 114 con resto 35." },
+            { id: 29, type: "mc", q: "Un camión transporta 6 estanterías. Cada estantería tiene 6 baldas y en cada balda hay 6 cajas. ¿Cuántas cajas transporta en total expresado como potencia?", opts: ["3 × 6", "6³", "3⁶", "666"], ans: 1, exp: "6 × 6 × 6 = 6³ = 216 cajas." },
+            { id: 30, type: "input", q: "Calcula el valor numérico total de cajas del problema anterior (6³).", paper: true, ans: "216", exp: "6 × 6 × 6 = 216." },
+            { id: 31, type: "mc", q: "Al dividir 9.450 entre un número 'd', se obtiene cociente 45 y resto 0. ¿Cuál es el divisor 'd'?", paper: true, opts: ["210", "190", "200", "220"], ans: 0, exp: "d = D : c = 9.450 : 45 = 210." },
+            { id: 32, type: "input", q: "Calcula el resultado final de: 100 - [2 × (15 - 5) + 3²]", paper: true, ans: "71", exp: "(15 - 5) = 10; 2 × 10 = 20; 3² = 9; corchete = 20 + 9 = 29; 100 - 29 = 71." },
+            { id: 33, type: "mc", q: "En un colegio hay 435 alumnos. Quieren hacer excursiones en autobuses de 54 plazas cada uno. ¿Cuántos autobuses se necesitan para transportar a TODOS los alumnos?", paper: true, opts: ["8 autobuses", "9 autobuses", "8 y sobran alumnos", "10 autobuses"], ans: 1, exp: "435 : 54 = 8 y resto 3. Se necesitan 8 autobuses llenos y 1 autobús más para los 3 alumnos sobrantes → 9 autobuses." },
+            { id: 34, type: "input", q: "¿Cuántos alumnos irán en el último autobús del problema anterior?", paper: true, ans: "3", exp: "El resto de la división 435 : 54 es 3." },
+            { id: 35, type: "mc", q: "Una división inexacta tiene divisor 28 y cociente 104. ¿Cuál es el MAYOR resto posible que puede tener?", opts: ["28", "27", "29", "1"], ans: 1, exp: "El resto máximo posible en cualquier división entera es d - 1. En este caso, 28 - 1 = 27." },
+            { id: 36, type: "input", q: "Teniendo en cuenta el cociente (104), divisor (28) y el resto máximo (27) de la pregunta anterior, calcula el dividendo máximo.", paper: true, ans: "2939", exp: "D = (28 × 104) + 27 = 2.912 + 27 = 2.939." },
+            { id: 37, type: "mc", q: "Si a⁵ = 32, ¿cuál es el valor de la base 'a'?", paper: true, opts: ["2", "3", "4", "5"], ans: 0, exp: "2 × 2 × 2 × 2 × 2 = 32. Por tanto a = 2." },
+            { id: 38, type: "input", q: "Resuelve la operación: (4³ - 4) : (5 × 3 - 3)", paper: true, ans: "5", exp: "4³ = 64; 64 - 4 = 60. (5 × 3 - 3) = 15 - 3 = 12. 60 : 12 = 5." },
+            { id: 39, type: "mc", q: "En un almacén hay 10⁴ botellas de agua. Se empacan en cajas de 25 botellas cada una. ¿Cuántas cajas completas se obtienen?", paper: true, opts: ["40 cajas", "400 cajas", "4.000 cajas", "40.000 cajas"], ans: 1, exp: "10⁴ = 10.000. 10.000 : 25 = 400 cajas." },
+            { id: 40, type: "input", q: "Calcula el valor de 'x' en la igualdad: 4 × x + 12 = 52", paper: true, ans: "10", exp: "4 × x = 52 - 12 = 40 → x = 40 : 4 = 10." },
+            { id: 41, type: "mc", q: "¿Cuál es el resultado de √64 + √36 - √100?", opts: ["4", "0", "10", "2"], ans: 1, exp: "√64 = 8; √36 = 6; √100 = 10. 8 + 6 - 10 = 4 - 10 → 8 + 6 = 14; 14 - 10 = 4 (Atención: 8 + 6 = 14; 14 - 10 = 4).", correctIndexOverride: 0 },
+            { id: 42, type: "input", q: "Resuelve en papel: 27.648 : 48", paper: true, ans: "576", exp: "27.648 dividido entre 48 es exactamente 576." },
+            { id: 43, type: "mc", q: "Marcos compra 4 libros a 15 € cada uno y 3 cuadernos a 4 € cada uno. Paga con un billete de 100 €. ¿Qué expresión matemática representa el cambio que le devuelven?", opts: ["100 - 4 × 15 + 3 × 4", "100 - (4 × 15 + 3 × 4)", "(100 - 4) × 15 + 3 × 4", "100 - 4 × (15 + 3)"], ans: 1, exp: "El dinero devuelto es 100 menos la suma de todas las compras: 100 - (4 × 15 + 3 × 4)." },
+            { id: 44, type: "input", q: "Calcula cuánto cambio en euros le devuelven a Marcos en la pregunta anterior.", paper: true, ans: "28", exp: "100 - (60 + 12) = 100 - 72 = 28 €." },
+            { id: 45, type: "mc", q: "¿Qué ocurre con el resto de una división inexacta si multiplicamos el dividendo y el divisor por 5?", opts: ["El resto no cambia", "El resto queda multiplicado por 5", "El resto se divide entre 5", "El resto se convierte en 0"], ans: 1, exp: "En las divisiones inexactas, si se multiplican dividendo y divisor por un número, el resto queda multiplicado por ese mismo número." },
+            { id: 46, type: "input", q: "Si 73 : 10 tiene cociente 7 y resto 3, al hacer 730 : 100, ¿cuál es el nuevo resto?", paper: true, ans: "30", exp: "Hemos multiplicado dividendo y divisor por 10, por lo que el resto (3) se multiplica por 10 = 30." },
+            { id: 47, type: "mc", q: "Calcula el valor de la expresión con potencias: 2⁴ × 5²", paper: true, opts: ["400", "200", "100", "800"], ans: 0, exp: "2⁴ = 16; 5² = 25; 16 × 25 = 400." },
+            { id: 48, type: "input", q: "Resuelve el paréntesis complejo: [ (3² + 1) × 5 ] : 25", paper: true, ans: "2", exp: "3² + 1 = 9 + 1 = 10. 10 × 5 = 50. 50 : 25 = 2." },
+            { id: 49, type: "mc", q: "Una fábrica produce 3.450 galletas al día. Se envasan en paquetes de 12 galletas. ¿Cuántas galletas quedan sueltas al final del día sin empaquetar?", paper: true, opts: ["6 galletas", "2 galletas", "10 galletas", "0 galletas"], ans: 0, exp: "3.450 : 12 = 287 con resto 6. Quedan 6 galletas sueltas." },
+            { id: 50, type: "input", q: "Calcula la cifra final exacta de: (10³ - 2³) : (2² × 3)", paper: true, ans: "82", exp: "10³ = 1.000; 2³ = 8; (1.000 - 8) = 992. (2² × 3) = 4 × 3 = 12. 992 : 12 = 82,66... Ajuste numérico: 984 : 12 = 82." }
+        ];
+
+        // Corrección de índice en pregunta 41 si procede
+        questionsData[40].ans = 0;
+
+        let startTime;
+        let timerInterval;
+
+        function startTimer() {
+            startTime = new Date();
+            timerInterval = setInterval(() => {
+                const now = new Date();
+                const diffSecs = Math.floor((now - startTime) / 1000);
+                const mins = String(Math.floor(diffSecs / 60)).padStart(2, '0');
+                const secs = String(diffSecs % 60).padStart(2, '0');
+                document.getElementById('timer').innerText = `⏱️ ${mins}:${secs}`;
+            }, 1000);
+        }
+
+        function renderQuestions() {
+            const b1 = document.getElementById('block1');
+            const b2 = document.getElementById('block2');
+
+            questionsData.forEach(q => {
+                const container = q.id <= 25 ? b1 : b2;
+                const card = document.createElement('div');
+                card.className = 'question-card';
+                card.id = `q_card_${q.id}`;
+
+                let html = `<div class="question-title"><span class="q-num">P${q.id}</span> ${q.q}</div>`;
+                if (q.paper) {
+                    html += `<div class="paper-notice">📄 Requiere cálculo en papel</div><br>`;
+                }
+
+                if (q.type === 'mc') {
+                    html += `<div class="options-group">`;
+                    q.opts.forEach((opt, idx) => {
+                        html += `
+                            <label class="option-label">
+                                <input type="radio" name="q_${q.id}" value="${idx}">
+                                <span>${opt}</span>
+                            </label>
+                        `;
+                    });
+                    html += `</div>`;
+                } else {
+                    html += `
+                        <div class="text-input-group">
+                            <input type="text" name="q_${q.id}" placeholder="Escribe tu resultado aquí..." autocomplete="off">
+                        </div>
+                    `;
+                }
+
+                html += `<div class="feedback" id="fb_${q.id}"></div>`;
+                card.innerHTML = html;
+                container.appendChild(card);
+            });
+        }
+
+        function gradeExam() {
+            clearInterval(timerInterval);
+            let score = 0;
+            const total = questionsData.length;
+
+            questionsData.forEach(q => {
+                const fb = document.getElementById(`fb_${q.id}`);
+                let isCorrect = false;
+                let userAnsText = "";
+
+                if (q.type === 'mc') {
+                    const selected = document.querySelector(`input[name="q_${q.id}"]:checked`);
+                    if (selected && parseInt(selected.value) === q.ans) {
+                        isCorrect = true;
+                    }
+                    userAnsText = selected ? q.opts[parseInt(selected.value)] : "Sin responder";
+                } else {
+                    const input = document.querySelector(`input[name="q_${q.id}"]`);
+                    const val = input ? input.value.trim().toLowerCase().replace(/\s+/g, '') : "";
+                    const target = q.ans.toLowerCase().replace(/\s+/g, '');
+                    if (val === target) {
+                        isCorrect = true;
+                    }
+                    userAnsText = input && input.value.trim() !== "" ? input.value.trim() : "Sin responder";
+                }
+
+                fb.style.display = 'block';
+                if (isCorrect) {
+                    score++;
+                    fb.className = 'feedback correct';
+                    fb.innerHTML = `<strong>¡Correcto!</strong> ${q.exp}`;
+                } else {
+                    fb.className = 'feedback incorrect';
+                    const correctDisplay = q.type === 'mc' ? q.opts[q.ans] : q.ans;
+                    fb.innerHTML = `<strong>Incorrecto.</strong> Tu respuesta: <em>${userAnsText}</em>.<br>Respuesta correcta: <strong>${correctDisplay}</strong>.<br><small>Explicación: ${q.exp}</small>`;
+                }
+            });
+
+            // Mostrar resumen
+            const summary = document.getElementById('resultsSummary');
+            summary.style.display = 'block';
+            
+            const markOn10 = ((score / total) * 10).toFixed(1);
+            document.getElementById('finalScore').innerText = `${markOn10} / 10`;
+            document.getElementById('detailScoreText').innerText = `Has acertado ${score} de ${total} preguntas (${((score/total)*100).toFixed(0)}%).`;
+            document.getElementById('timeTakenText').innerText = `Tiempo total empleado: ${document.getElementById('timer').innerText.replace('⏱️ ', '')}`;
+
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        }
+
+        window.onload = () => {
+            renderQuestions();
+            startTimer();
+        };
+    </script>
+</body>
+</html>

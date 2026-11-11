@@ -1,0 +1,17 @@
+# Archivos del sistema
+.DS_Store
+Thumbs.db
+Desktop.ini
+
+# Archivos temporales de editores
+*~
+*.swp
+*.swo
+
+# Dependencias y artefactos generados
+node_modules/
+dist/
+coverage/
+
+# Registros
+*.log
