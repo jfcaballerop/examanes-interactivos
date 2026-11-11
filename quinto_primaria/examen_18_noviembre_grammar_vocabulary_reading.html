@@ -59,6 +59,16 @@
         border-radius: 4px;
         margin-bottom: 25px;
       }
+      .reading-box {
+        background: white;
+        border: 2px solid var(--secondary);
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 25px;
+      }
+      .reading-box h2 {
+        margin-top: 0;
+      }
       .back-link {
         display: inline-block;
         margin-bottom: 16px;
@@ -177,11 +187,11 @@
         <ul>
           <li>
             Examen de preparación para la prueba del
-            <strong>17 de Noviembre</strong>.
+            <strong>18 de Noviembre</strong>.
           </li>
           <li>
-            50 preguntas interactivas de Listening, Writing, Sintaxis y
-            Vocabulario (Unit 2: "Listen to your art").
+            El banco tiene 100 preguntas; en cada intento se muestran 50 al azar
+            y al reiniciar cambia la selección.
           </li>
           <li>
             Utiliza un cuaderno en papel como borrador para redactar oraciones
@@ -193,6 +203,19 @@
             sobre 10 y ver las explicaciones.
           </li>
         </ul>
+      </div>
+      <div class="reading-box">
+        <h2>Reading: A Visit to the Art Gallery</h2>
+        <p>
+          On Saturday, Leo visited the Art Gallery in Madrid with his family. He
+          liked a painting called <em>The Starry Night</em>. In the foreground,
+          there was a tall, dark tree. In the background, the sky was bright,
+          with yellow stars and a crescent moon. Leo thought the colors were
+          brighter and more creative than in traditional portraits. His sister
+          Clara preferred a marble lion because it was more impressive than the
+          paintings. She also thought it was expensive to make. Leo found some
+          modern abstract statues weird and silly.
+        </p>
       </div>
       <form id="quizForm">
         <div class="section-header">
@@ -273,7 +296,7 @@
         },
         {
           id: 4,
-          q: "Listening Script 2: Which adjective describes abstract art?",
+          q: "Read: 'Abstract art is more creative than traditional painting.' Which adjective describes abstract art?",
           type: "radio",
           options: ["Boring", "Creative", "Horrible", "Silly"],
           answer: "Creative",
@@ -324,7 +347,7 @@
         },
         {
           id: 10,
-          q: "Listening Script 3: Why is it traditional?",
+          q: "Read: 'This portrait was painted in 1850, so it is traditional.' Why does the speaker say it is traditional?",
           type: "radio",
           options: [
             "Painted recently",
@@ -616,7 +639,7 @@
         },
         {
           id: 40,
-          q: "Error check: 'This sculpture is the most weird in the gallery.' Standard choice:",
+          q: "Choose a correct superlative of 'weird':",
           type: "radio",
           options: [
             "the weirdest",
@@ -625,7 +648,8 @@
             "most weirder",
           ],
           answer: "the weirdest",
-          explain: "Weird -> the weirdest.",
+          explain:
+            "Weird puede formar el superlativo como the weirdest; the most weird también se utiliza.",
         },
         {
           id: 41,
@@ -707,18 +731,552 @@
         },
         {
           id: 50,
-          q: "In Richmond tests, what happens with spelling mistakes?",
+          q: "Choose the correctly spelled English word for 'creativo'.",
           type: "radio",
-          options: [
-            "Extra points",
-            "Reduce overall mark",
-            "Doesn't matter",
-            "Teacher ignores",
-          ],
-          answer: "Reduce overall mark",
-          explain: "Los errores de spelling restan puntuación.",
+          options: ["creative", "creativ", "creativve", "creatife"],
+          answer: "creative",
+          explain: "La palabra inglesa para creativo se escribe creative.",
         },
       ];
+
+      questionsBlock1.push(
+        {
+          id: 51,
+          q: "Where did Leo go on Saturday?",
+          type: "radio",
+          options: [
+            "To the Art Gallery in Madrid",
+            "To a sports stadium",
+            "To the cinema",
+            "To a school",
+          ],
+          answer: "To the Art Gallery in Madrid",
+          explain: "El texto dice que Leo visitó la Art Gallery in Madrid.",
+        },
+        {
+          id: 52,
+          q: "Who went to the gallery with Leo?",
+          type: "radio",
+          options: [
+            "His family",
+            "His football team",
+            "His teacher",
+            "His neighbors",
+          ],
+          answer: "His family",
+          explain: "Leo visitó la galería con su familia.",
+        },
+        {
+          id: 53,
+          q: "What was the name of the painting Leo liked?",
+          type: "radio",
+          options: [
+            "The Starry Night",
+            "The Dark Forest",
+            "The Marble Lion",
+            "The Bright Gallery",
+          ],
+          answer: "The Starry Night",
+          explain: "El cuadro se llamaba The Starry Night.",
+        },
+        {
+          id: 54,
+          q: "What could Leo see in the foreground?",
+          type: "radio",
+          options: [
+            "A tall, dark tree",
+            "A marble lion",
+            "A crescent moon",
+            "A small boat",
+          ],
+          answer: "A tall, dark tree",
+          explain: "El árbol alto y oscuro estaba en primer plano.",
+        },
+        {
+          id: 55,
+          q: "What was in the background of the painting?",
+          type: "radio",
+          options: [
+            "Yellow stars and a crescent moon",
+            "A dark tree",
+            "A marble lion",
+            "A museum ticket",
+          ],
+          answer: "Yellow stars and a crescent moon",
+          explain:
+            "El fondo mostraba estrellas amarillas y una luna creciente.",
+        },
+        {
+          id: 56,
+          q: "Which adjective describes the sky in the painting?",
+          type: "radio",
+          options: ["Bright", "Expensive", "Silly", "Traditional"],
+          answer: "Bright",
+          explain: "Bright significa brillante o luminoso.",
+        },
+        {
+          id: 57,
+          q: "What is the opposite of 'dark'?",
+          type: "radio",
+          options: ["Bright", "Weird", "Cheap", "Old"],
+          answer: "Bright",
+          explain:
+            "Bright es el opuesto de dark cuando hablamos de luz o colores.",
+        },
+        {
+          id: 58,
+          q: "What does 'foreground' mean?",
+          type: "radio",
+          options: [
+            "The front part of a picture",
+            "The back part of a picture",
+            "The picture's frame",
+            "The artist's name",
+          ],
+          answer: "The front part of a picture",
+          explain: "Foreground significa primer plano, la parte delantera.",
+        },
+        {
+          id: 59,
+          q: "What does 'background' mean?",
+          type: "radio",
+          options: [
+            "The part farther back",
+            "The front part",
+            "The frame",
+            "The title",
+          ],
+          answer: "The part farther back",
+          explain: "Background es el fondo, la parte que parece más alejada.",
+        },
+        {
+          id: 60,
+          q: "Which artwork did Clara prefer?",
+          type: "radio",
+          options: [
+            "A marble lion",
+            "The tree",
+            "The yellow stars",
+            "A traditional portrait",
+          ],
+          answer: "A marble lion",
+          explain: "Clara prefería una escultura de un león de mármol.",
+        },
+        {
+          id: 61,
+          q: "Why did Clara like the lion sculpture?",
+          type: "radio",
+          options: [
+            "It was more impressive",
+            "It was very cheap",
+            "It was in the background",
+            "It was a painting",
+          ],
+          answer: "It was more impressive",
+          explain: "El texto dice que era more impressive than the paintings.",
+        },
+        {
+          id: 62,
+          q: "If something is expensive, it...",
+          type: "radio",
+          options: [
+            "Costs a lot of money",
+            "Costs nothing",
+            "Is very bright",
+            "Is easy to draw",
+          ],
+          answer: "Costs a lot of money",
+          explain: "Expensive significa caro: cuesta mucho dinero.",
+        },
+        {
+          id: 63,
+          q: "What is the opposite of 'expensive'?",
+          type: "radio",
+          options: ["Cheap", "Bright", "Creative", "Weird"],
+          answer: "Cheap",
+          explain: "Cheap significa barato.",
+        },
+        {
+          id: 64,
+          q: "What does 'traditional' describe in the passage?",
+          type: "radio",
+          options: [
+            "An older or usual style",
+            "Something very expensive",
+            "A bright color",
+            "A funny statue",
+          ],
+          answer: "An older or usual style",
+          explain: "Traditional describe un estilo tradicional o de antes.",
+        },
+        {
+          id: 65,
+          q: "What does 'weird' mean?",
+          type: "radio",
+          options: ["Strange", "Cheap", "Bright", "Traditional"],
+          answer: "Strange",
+          explain: "Weird significa extraño o raro.",
+        },
+        {
+          id: 66,
+          q: "What does 'silly' mean?",
+          type: "radio",
+          options: [
+            "Funny or a little ridiculous",
+            "Very expensive",
+            "Very old",
+            "Full of light",
+          ],
+          answer: "Funny or a little ridiculous",
+          explain: "Silly significa tonto o un poco absurdo.",
+        },
+        {
+          id: 67,
+          q: "Choose the correct comparative of 'bright'.",
+          type: "radio",
+          options: ["Brighter", "Brightest", "More bright", "Brightter"],
+          answer: "Brighter",
+          explain: "Bright es corto y forma el comparativo añadiendo -er.",
+        },
+        {
+          id: 68,
+          q: "Choose the correct comparative of 'creative'.",
+          type: "radio",
+          options: [
+            "More creative",
+            "Creativer",
+            "Creativeest",
+            "Most creative than",
+          ],
+          answer: "More creative",
+          explain: "Creative es largo y forma el comparativo con more.",
+        },
+        {
+          id: 69,
+          q: "What is the comparative form of 'good'?",
+          type: "radio",
+          options: ["Better", "Gooder", "Best", "More good"],
+          answer: "Better",
+          explain: "Good es irregular: su comparativo es better.",
+        },
+        {
+          id: 70,
+          q: "What is the comparative form of 'bad'?",
+          type: "radio",
+          options: ["Worse", "Badder", "Worst", "More bad"],
+          answer: "Worse",
+          explain: "Bad es irregular: su comparativo es worse.",
+        },
+        {
+          id: 71,
+          q: "Choose the correct sentence.",
+          type: "radio",
+          options: [
+            "The stars are bright.",
+            "The stars is bright.",
+            "The stars am bright.",
+            "The stars be bright.",
+          ],
+          answer: "The stars are bright.",
+          explain: "Stars es plural, así que usamos are.",
+        },
+        {
+          id: 72,
+          q: "Complete: 'There ______ a tree in the foreground.'",
+          type: "text",
+          answer: "is",
+          explain: "There is se usa con un solo elemento: a tree.",
+        },
+        {
+          id: 73,
+          q: "Which connector gives a reason? 'Clara liked the sculpture ______ it was impressive.'",
+          type: "radio",
+          options: ["because", "but", "than", "then"],
+          answer: "because",
+          explain: "Because introduce la razón por la que le gustó.",
+        },
+        {
+          id: 74,
+          q: "Which connector shows contrast? 'The statue was modern, ______ it looked traditional.'",
+          type: "radio",
+          options: ["but", "because", "then", "so"],
+          answer: "but",
+          explain: "But significa pero y muestra contraste.",
+        },
+        {
+          id: 75,
+          q: "True or False: Leo thought the colors were brighter than in traditional portraits.",
+          type: "radio",
+          options: ["True", "False"],
+          answer: "True",
+          explain:
+            "El texto indica que los colores eran brighter than in traditional portraits.",
+        },
+      );
+
+      questionsBlock2.push(
+        {
+          id: 76,
+          q: "According to the text, what was the shape of the moon?",
+          type: "radio",
+          options: ["A crescent", "A full circle", "A square", "A star"],
+          answer: "A crescent",
+          explain: "El texto dice crescent moon: luna creciente.",
+        },
+        {
+          id: 77,
+          q: "True or False: Clara preferred the marble lion to the paintings.",
+          type: "radio",
+          options: ["True", "False"],
+          answer: "True",
+          explain:
+            "Clara preferred the marble lion because it was more impressive.",
+        },
+        {
+          id: 78,
+          q: "True or False: Leo thought every abstract statue was beautiful.",
+          type: "radio",
+          options: ["True", "False"],
+          answer: "False",
+          explain: "Leo encontró algunas estatuas abstractas raras y tontas.",
+        },
+        {
+          id: 79,
+          q: "Complete: 'The lion was more ______ than the paintings.' (impressive)",
+          type: "text",
+          answer: "impressive",
+          explain: "La frase completa es more impressive than the paintings.",
+        },
+        {
+          id: 80,
+          q: "Choose the correct sentence.",
+          type: "radio",
+          options: [
+            "The sky is brighter than the tree.",
+            "The sky is brightter than the tree.",
+            "The sky brighter than the tree.",
+            "The sky is brightest than the tree.",
+          ],
+          answer: "The sky is brighter than the tree.",
+          explain: "Bright forma brighter; usamos is + comparativo + than.",
+        },
+        {
+          id: 81,
+          q: "Complete: 'This is the ______ painting in the gallery.' (creative)",
+          type: "text",
+          answer: "most creative",
+          explain: "Creative es largo y forma el superlativo con most.",
+        },
+        {
+          id: 82,
+          q: "Choose the correctly spelled comparative of 'thin'.",
+          type: "radio",
+          options: ["Thinner", "Thiner", "Thinnier", "More thinner"],
+          answer: "Thinner",
+          explain: "Thin dobla la n antes de añadir -er: thinner.",
+        },
+        {
+          id: 83,
+          q: "Choose the correctly spelled comparative of 'heavy'.",
+          type: "radio",
+          options: ["Heavier", "Heavyer", "Heav ier", "More heavier"],
+          answer: "Heavier",
+          explain: "Heavy termina en y; cambiamos y por i y añadimos -er.",
+        },
+        {
+          id: 84,
+          q: "Choose the correct superlative of 'bright'.",
+          type: "radio",
+          options: [
+            "The brightest",
+            "The more bright",
+            "The brighter",
+            "The most brightest",
+          ],
+          answer: "The brightest",
+          explain: "Bright es corto y forma el superlativo con -est.",
+        },
+        {
+          id: 85,
+          q: "Choose the correct comparison.",
+          type: "radio",
+          options: [
+            "The lion is more impressive than the painting.",
+            "The lion is impressiver than the painting.",
+            "The lion more impressive the painting.",
+            "The lion is most impressive than the painting.",
+          ],
+          answer: "The lion is more impressive than the painting.",
+          explain: "Impressive es largo y usa more; la comparación lleva than.",
+        },
+        {
+          id: 86,
+          q: "Complete: 'In the background, there ______ yellow stars.'",
+          type: "text",
+          answer: "are",
+          explain: "Stars es plural, así que usamos there are.",
+        },
+        {
+          id: 87,
+          q: "Choose the correctly punctuated sentence.",
+          type: "radio",
+          options: [
+            "In the background, there are yellow stars.",
+            "in the background there are yellow stars",
+            "In the background there is yellow stars.",
+            "In the background, there are yellow stars",
+          ],
+          answer: "In the background, there are yellow stars.",
+          explain:
+            "Empieza con mayúscula y termina con punto; stars lleva are.",
+        },
+        {
+          id: 88,
+          q: "Choose the correct translation of 'El león era más impresionante que los cuadros.'",
+          type: "radio",
+          options: [
+            "The lion was more impressive than the paintings.",
+            "The lion was impressiver that the paintings.",
+            "The lion more impressive than paintings.",
+            "The lion was the most impressive than paintings.",
+          ],
+          answer: "The lion was more impressive than the paintings.",
+          explain: "Usamos was more impressive than para comparar en pasado.",
+        },
+        {
+          id: 89,
+          q: "Complete: 'Leo ______ the painting because he liked its colors.'",
+          type: "radio",
+          options: ["preferred", "prefer", "preferring", "prefers"],
+          answer: "preferred",
+          explain:
+            "El texto habla de una visita pasada, por eso usamos preferred.",
+        },
+        {
+          id: 90,
+          q: "What is the best first sentence for an art review?",
+          type: "radio",
+          options: [
+            "I am going to describe a painting called The Starry Night.",
+            "Yesterday I ate a sandwich.",
+            "The bus is bigger than the car.",
+            "I forgot my pencil.",
+          ],
+          answer: "I am going to describe a painting called The Starry Night.",
+          explain: "La introducción presenta la obra que se va a describir.",
+        },
+        {
+          id: 91,
+          q: "Complete the comparative: 'A marble lion is ______ than a small picture.' (big)",
+          type: "text",
+          answer: "bigger",
+          explain: "Big dobla la consonante final antes de añadir -er: bigger.",
+        },
+        {
+          id: 92,
+          q: "Choose the sentence without a double comparative.",
+          type: "radio",
+          options: [
+            "The stars are brighter than the trees.",
+            "The stars are more brighter than the trees.",
+            "The stars are brightest than the trees.",
+            "The stars more bright than the trees.",
+          ],
+          answer: "The stars are brighter than the trees.",
+          explain: "No se combina more con el comparativo brighter.",
+        },
+        {
+          id: 93,
+          q: "Which sentence gives an opinion and a reason?",
+          type: "radio",
+          options: [
+            "I prefer the painting because it is colorful.",
+            "The painting is in the room.",
+            "There are three stars.",
+            "The ticket is expensive.",
+          ],
+          answer: "I prefer the painting because it is colorful.",
+          explain: "I prefer expresa una opinión y because da la razón.",
+        },
+        {
+          id: 94,
+          q: "Complete: 'The painting was ______ than the portrait.' (colorful)",
+          type: "text",
+          answer: "more colorful",
+          explain: "Colorful es largo y forma el comparativo con more.",
+        },
+        {
+          id: 95,
+          q: "Choose the correct superlative of 'good'.",
+          type: "radio",
+          options: ["The best", "The goodest", "The better", "The most good"],
+          answer: "The best",
+          explain: "Good es irregular; su superlativo es the best.",
+        },
+        {
+          id: 96,
+          q: "Choose the correct sentence: the two paintings are equally colorful.",
+          type: "radio",
+          options: [
+            "This painting is as colorful as that one.",
+            "This painting is as colorful than that one.",
+            "This painting is more colorful as that one.",
+            "This painting is colorfulest as that one.",
+          ],
+          answer: "This painting is as colorful as that one.",
+          explain:
+            "Para decir que son igual de coloridos usamos as + adjetivo + as.",
+        },
+        {
+          id: 97,
+          q: "The first ticket costs €5 and the second costs €10. Choose the correct sentence.",
+          type: "radio",
+          options: [
+            "The first ticket isn't as expensive as the second.",
+            "The first ticket is as expensive as the second.",
+            "The first ticket is more expensive than the second.",
+            "The first ticket isn't cheaper than the second.",
+          ],
+          answer: "The first ticket isn't as expensive as the second.",
+          explain:
+            "La primera entrada cuesta menos: isn't as expensive as significa que no es tan cara como la segunda.",
+        },
+        {
+          id: 98,
+          q: "Which detail is in the reading passage?",
+          type: "radio",
+          options: [
+            "A crescent moon",
+            "A red bus",
+            "A beach",
+            "A football match",
+          ],
+          answer: "A crescent moon",
+          explain: "El texto menciona una luna creciente en el fondo.",
+        },
+        {
+          id: 99,
+          q: "Complete: 'Leo found the abstract statues ______ and silly.'",
+          type: "text",
+          answer: "weird",
+          explain:
+            "El texto dice que algunas estatuas le parecieron weird and silly.",
+        },
+        {
+          id: 100,
+          q: "Choose the best conclusion for a short art review.",
+          type: "radio",
+          options: [
+            "I recommend visiting this gallery.",
+            "The tree is in the foreground.",
+            "There are yellow stars.",
+            "The ticket is on Saturday.",
+          ],
+          answer: "I recommend visiting this gallery.",
+          explain:
+            "La conclusión puede terminar con una opinión o recomendación.",
+        },
+      );
 
       function renderQuestions(questions, containerId) {
         const container = document.getElementById(containerId);
@@ -740,14 +1298,40 @@
         });
       }
 
-      renderQuestions(questionsBlock1, "block1");
-      renderQuestions(questionsBlock2, "block2");
+      function shuffleQuestions(questions) {
+        const shuffled = [...questions];
+        for (let index = shuffled.length - 1; index > 0; index--) {
+          const randomIndex = Math.floor(Math.random() * (index + 1));
+          [shuffled[index], shuffled[randomIndex]] = [
+            shuffled[randomIndex],
+            shuffled[index],
+          ];
+        }
+        return shuffled;
+      }
+
+      function selectQuestions(questions, firstId) {
+        return shuffleQuestions(questions)
+          .slice(0, 25)
+          .map((question, index) => ({
+            ...question,
+            id: firstId + index,
+          }));
+      }
+
+      const visibleQuestionsBlock1 = selectQuestions(questionsBlock1, 1);
+      const visibleQuestionsBlock2 = selectQuestions(questionsBlock2, 26);
+      renderQuestions(visibleQuestionsBlock1, "block1");
+      renderQuestions(visibleQuestionsBlock2, "block2");
 
       function evaluateQuiz() {
         if (quizEvaluated) return;
         quizEvaluated = true;
         clearInterval(timerInterval);
-        const allQuestions = [...questionsBlock1, ...questionsBlock2];
+        const allQuestions = [
+          ...visibleQuestionsBlock1,
+          ...visibleQuestionsBlock2,
+        ];
         let score = 0;
         const feedbackContainer = document.getElementById("feedbackContainer");
         feedbackContainer.innerHTML = "";
