@@ -1,0 +1,709 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Examen 2: Grammar, Vocabulary & Reading - Unit 2 (Richmond 5º Primaria)</title>
+    <style>
+        :root {
+            --primary: #4a2a51;
+            --secondary: #8e44ad;
+            --bg: #f5f0f7;
+            --card: #ffffff;
+            --text: #333333;
+            --success: #2e7d32;
+            --error: #c62828;
+        }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: var(--bg);
+            color: var(--text);
+            margin: 0;
+            padding: 0;
+            line-height: 1.6;
+        }
+        header {
+            position: sticky;
+            top: 0;
+            background: var(--primary);
+            color: white;
+            padding: 15px 20px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            z-index: 1000;
+        }
+        header h1 {
+            margin: 0;
+            font-size: 1.2rem;
+        }
+        .timer {
+            font-size: 1.2rem;
+            font-weight: bold;
+            background: rgba(255,255,255,0.2);
+            padding: 5px 15px;
+            border-radius: 20px;
+        }
+        .container {
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 0 20px;
+        }
+        .instructions {
+            background: #f3e5f5;
+            border-left: 5px solid var(--secondary);
+            padding: 15px;
+            border-radius: 4px;
+            margin-bottom: 25px;
+        }
+        .reading-box {
+            background: #ffffff;
+            border: 2px solid var(--secondary);
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 25px;
+        }
+        .section-header {
+            background: var(--primary);
+            color: white;
+            padding: 10px 15px;
+            border-radius: 6px;
+            margin: 30px 0 15px 0;
+        }
+        .question-card {
+            background: var(--card);
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .question-card p.q-text {
+            font-weight: 600;
+            font-size: 1.05rem;
+            margin-top: 0;
+        }
+        .options-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        label.option-label {
+            display: flex;
+            align-items: center;
+            padding: 10px 15px;
+            background: #f8f9fa;
+            border: 1px solid #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        label.option-label:hover {
+            background: #e9ecef;
+        }
+        input[type="radio"] {
+            margin-right: 12px;
+        }
+        input[type="text"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 6px;
+            font-size: 1rem;
+            box-sizing: border-box;
+        }
+        button.submit-btn {
+            display: block;
+            width: 100%;
+            padding: 15px;
+            background: var(--success);
+            color: white;
+            border: none;
+            border-radius: 8px;
+            font-size: 1.2rem;
+            font-weight: bold;
+            cursor: pointer;
+            margin: 40px 0;
+            transition: background 0.3s;
+        }
+        button.submit-btn:hover {
+            background: #1b5e20;
+        }
+        .results-box {
+            display: none;
+            background: white;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+        }
+        .feedback {
+            margin-top: 10px;
+            padding: 10px;
+            border-radius: 6px;
+            font-size: 0.95rem;
+        }
+        .feedback.correct {
+            background: #e8f5e9;
+            color: var(--success);
+            border-left: 4px solid var(--success);
+        }
+        .feedback.incorrect {
+            background: #ffebee;
+            color: var(--error);
+            border-left: 4px solid var(--error);
+        }
+    </style>
+</head>
+<body>
+
+<header>
+    <h1>Examen 2: Grammar, Vocabulary & Reading (Richmond - Unit 2)</h1>
+    <div class="timer" id="timer">⏱️ 00:00</div>
+</header>
+
+<div class="container">
+    <div class="instructions">
+        <strong>📌 Instrucciones para Álvaro:</strong>
+        <ul>
+            <li>Examen oficial del <strong>18 de Noviembre</strong>.</li>
+            <li>Consta de 50 preguntas sobre la Unit 2 ("Listen to your art"): Vocabulario, Reglas de Comparativos/Superlativos y Comprensión Lectora.</li>
+            <li>Usa tu papel en sucio para hacer los cambios ortográficos de los adjetivos antes de responder.</li>
+            <li>Al finalizar, pulsa <strong>"Entregar y Corregir Examen"</strong> para obtener tu nota sobre 10.</li>
+        </ul>
+    </div>
+
+    <!-- TEXTO DE READING -->
+    <div class="reading-box">
+        <h3>📖 Reading Text: "A Visit to the National Gallery"</h3>
+        <p>
+            Last Saturday, Leo visited the Art Gallery in Madrid with his family. They saw many famous paintings and sculptures. 
+            Leo liked a picture called <em>'The Starry Night'</em>. In the <strong>foreground</strong>, there is a tall, dark tree. 
+            In the <strong>background</strong>, you can see bright yellow stars and a crescent moon shining over a small village. 
+            Leo thought the colors were much <strong>brighter</strong> and more <strong>creative</strong> than in traditional portraits. 
+            His sister Clara preferred a sculpture of a marble lion. She said it was <strong>more impressive</strong> than the paintings, 
+            even though it was very <strong>expensive</strong> to make. However, Leo found the modern abstract statues a bit <strong>weird</strong> 
+            and <strong>silly</strong>. Overall, it was a fantastic day of art discovery!
+        </p>
+    </div>
+
+    <form id="quizForm">
+        <!-- SECCIÓN 1 -->
+        <div class="section-header">
+            <h2>Bloque 1: Vocabulary & Grammar Fundamentals (Preguntas 1 a 25 - Nivel Fácil/Medio)</h2>
+        </div>
+        <div id="block1"></div>
+
+        <!-- SECCIÓN 2 -->
+        <div class="section-header">
+            <h2>Bloque 2: Advanced Grammar, Reading Comprehension & Spelling (Preguntas 26 a 50 - Nivel Medio/Alto)</h2>
+        </div>
+        <div id="block2"></div>
+
+        <button type="button" class="submit-btn" onclick="evaluateQuiz()">📄 Entregar y Corregir Examen</button>
+    </form>
+
+    <div class="results-box" id="resultsBox">
+        <h2>🎉 Resultados de Álvaro</h2>
+        <p id="scoreText" style="font-size: 1.3rem; font-weight: bold;"></p>
+        <p id="timeText"></p>
+        <hr>
+        <h3>Desglose de Respuestas y Explicaciones Pedagógicas:</h3>
+        <div id="feedbackContainer"></div>
+    </div>
+</div>
+
+<script>
+    let seconds = 0;
+    const timerElem = document.getElementById('timer');
+    const timerInterval = setInterval(() => {
+        seconds++;
+        const mins = Math.floor(seconds / 60).toString().padStart(2, '0');
+        const secs = (seconds % 60).toString().padStart(2, '0');
+        timerElem.textContent = `⏱️ ${mins}:${secs}`;
+    }, 1000);
+
+    const questionsBlock1 = [
+        {
+            id: 1,
+            q: "Vocabulary: What does 'foreground' mean in a picture?",
+            type: "radio",
+            options: ["The top part", "The front part", "The back part", "The frame"],
+            answer: "The front part",
+            explain: "Foreground es el primer plano o parte delantera."
+        },
+        {
+            id: 2,
+            q: "Vocabulary: What is the opposite of 'background'?",
+            type: "radio",
+            options: ["Foreground", "Light", "Dark", "Creative"],
+            answer: "Foreground",
+            explain: "El opuesto de 'background' (fondo) es 'foreground' (primer plano)."
+        },
+        {
+            id: 3,
+            q: "Vocabulary: If something costs €1,000,000, it is very ______.",
+            type: "radio",
+            options: ["cheap", "expensive", "boring", "silly"],
+            answer: "expensive",
+            explain: "Caro en inglés es 'expensive'."
+        },
+        {
+            id: 4,
+            q: "Vocabulary: What is the opposite of 'expensive'?",
+            type: "radio",
+            options: ["Cheap", "Bright", "Dark", "Modern"],
+            answer: "Cheap",
+            explain: "El opuesto de caro es barato ('cheap')."
+        },
+        {
+            id: 5,
+            q: "Vocabulary: A painting with lots of yellow, red and gold light is very ______.",
+            type: "radio",
+            options: ["dark", "bright", "boring", "horrible"],
+            answer: "bright",
+            explain: "Un cuadro con colores vivos y luz es 'bright' (brillante/luminoso)."
+        },
+        {
+            id: 6,
+            q: "Vocabulary: Escribe en inglés la palabra para 'creativo':",
+            type: "text",
+            answer: "creative",
+            explain: "Creativo se escribe 'creative'."
+        },
+        {
+            id: 7,
+            q: "Vocabulary: Escribe en inglés la palabra para 'tradicional':",
+            type: "text",
+            answer: "traditional",
+            explain: "Tradicional se escribe 'traditional'."
+        },
+        {
+            id: 8,
+            q: "Vocabulary: Escribe en inglés la palabra para 'moderno':",
+            type: "text",
+            answer: "modern",
+            explain: "Moderno se escribe 'modern'."
+        },
+        {
+            id: 9,
+            q: "Grammar Rules: How do you form the comparative of short adjectives like 'dark'?",
+            type: "radio",
+            options: ["Add -est (darkest)", "Add -er (darker)", "Put 'more' before (more dark)", "Put 'most' before (most dark)"],
+            answer: "Add -er (darker)",
+            explain: "A los adjetivos cortos de 1 sílaba se les añade el sufijo '-er'."
+        },
+        {
+            id: 10,
+            q: "Grammar Rules: How do you form the comparative of long adjectives like 'colorful'?",
+            type: "radio",
+            options: ["Add -er (colorfuller)", "Put 'more' before (more colorful)", "Add -est (colorfulest)", "Do not change"],
+            answer: "Put 'more' before (more colorful)",
+            explain: "A los adjetivos largos se les antepone la palabra 'more'."
+        },
+        {
+            id: 11,
+            q: "Grammar Drill: Complete: 'This dark blue painting is ______ than the light yellow one.' (dark)",
+            type: "text",
+            answer: "darker",
+            explain: "Dark es adjetivo corto: 'darker'."
+        },
+        {
+            id: 12,
+            q: "Grammar Drill: Complete: 'Modern sculptures are ______ than old statues.' (creative)",
+            type: "text",
+            answer: "more creative",
+            explain: "Creative es adjetivo largo: 'more creative'."
+        },
+        {
+            id: 13,
+            q: "Grammar Irregulars: What is the comparative of 'good'?",
+            type: "radio",
+            options: ["Gooder", "Better", "Best", "More good"],
+            answer: "Better",
+            explain: "El comparativo de 'good' es irregular: 'better'."
+        },
+        {
+            id: 14,
+            q: "Grammar Irregulars: What is the comparative of 'bad'?",
+            type: "radio",
+            options: ["Badder", "Worse", "Worst", "More bad"],
+            answer: "Worse",
+            explain: "El comparativo de 'bad' es irregular: 'worse'."
+        },
+        {
+            id: 15,
+            q: "Grammar Spelling: Comparative of 'big':",
+            type: "text",
+            answer: "bigger",
+            explain: "Big -> bigger (dobla consonante)."
+        },
+        {
+            id: 16,
+            q: "Grammar Spelling: Comparative of 'pretty':",
+            type: "text",
+            answer: "prettier",
+            explain: "Pretty -> prettier (la 'y' cambia a 'i')."
+        },
+        {
+            id: 17,
+            q: "Reading Comprehension: Where did Leo go last Saturday?",
+            type: "radio",
+            options: ["To a sports stadium", "To the Art Gallery in Madrid", "To the cinema", "To a theme park"],
+            answer: "To the Art Gallery in Madrid",
+            explain: "El texto dice: 'Leo visited the Art Gallery in Madrid'."
+        },
+        {
+            id: 18,
+            q: "Reading Comprehension: What object is in the foreground of 'The Starry Night'?",
+            type: "radio",
+            options: ["A crescent moon", "A tall, dark tree", "A marble lion", "A small dog"],
+            answer: "A tall, dark tree",
+            explain: "Texto: 'In the foreground, there is a tall, dark tree'."
+        },
+        {
+            id: 19,
+            q: "Reading Comprehension: What can you see in the background of the painting?",
+            type: "radio",
+            options: ["Bright yellow stars and a crescent moon", "A marble lion", "Abstract statues", "A big museum cafeteria"],
+            answer: "Bright yellow stars and a crescent moon",
+            explain: "Texto: 'In the background, you can see bright yellow stars and a crescent moon'."
+        },
+        {
+            id: 20,
+            q: "Reading True/False: 'Leo thought the colors were darker than traditional portraits.' True or False?",
+            type: "radio",
+            options: ["True", "False"],
+            answer: "False",
+            explain: "Falso: Leo pensó que los colores eran 'brighter' (más brillantes)."
+        },
+        {
+            id: 21,
+            q: "Reading Comprehension: What did Leo's sister Clara prefer?",
+            type: "radio",
+            options: ["The paintings", "A sculpture of a marble lion", "The abstract statues", "The museum gift shop"],
+            answer: "A sculpture of a marble lion",
+            explain: "Texto: 'His sister Clara preferred a sculpture of a marble lion'."
+        },
+        {
+            id: 22,
+            q: "Reading Vocabulary: What word in the text describes how Leo felt about modern abstract statues?",
+            type: "radio",
+            options: ["Impressive", "Bright", "Weird and silly", "Traditional"],
+            answer: "Weird and silly",
+            explain: "Texto: 'Leo found the modern abstract statues a bit weird and silly'."
+        },
+        {
+            id: 23,
+            q: "Superlative Introduction: What is the superlative of 'bright'?",
+            type: "radio",
+            options: ["the brighter", "the brightest", "the most bright", "the more bright"],
+            answer: "the brightest",
+            explain: "Superlativo de adjetivo corto: 'the brightest'."
+        },
+        {
+            id: 24,
+            q: "Superlative Introduction: What is the superlative of 'expensive'?",
+            type: "radio",
+            options: ["the expensivest", "the most expensive", "the more expensive", "the expensiver"],
+            answer: "the most expensive",
+            explain: "Superlativo de adjetivo largo: 'the most expensive'."
+        },
+        {
+            id: 25,
+            q: "Superlative Irregular: What is the superlative form of 'good'?",
+            type: "text",
+            answer: "the best",
+            explain: "El superlativo de 'good' es 'the best'."
+        }
+    ];
+
+    const questionsBlock2 = [
+        {
+            id: 26,
+            q: "Grammar Transformation: Transform using comparative: 'Art is good. Sport is good.' -> 'I think art is ______ than sport.'",
+            type: "text",
+            answer: "better",
+            explain: "Comparativo de 'good' -> 'better'."
+        },
+        {
+            id: 27,
+            q: "Grammar Transformation: Transform using comparative: 'This sculpture is bad. That painting is worse.' Fill the gap: 'That painting is ______ than the sculpture.'",
+            type: "text",
+            answer: "worse",
+            explain: "Comparativo de 'bad' -> 'worse'."
+        },
+        {
+            id: 28,
+            q: "Grammar Mechanics: Which word completes the comparison? 'This picture is more creative ______ that one.'",
+            type: "radio",
+            options: ["then", "that", "than", "from"],
+            answer: "than",
+            explain: "En comparaciones en inglés se utiliza SIEMPRE 'than' (no 'then' ni 'that')."
+        },
+        {
+            id: 29,
+            q: "Spelling Check: Choose the correctly spelled comparative form of 'heavy':",
+            type: "radio",
+            options: ["heavier", "heavyer", "heavierr", "more heavy"],
+            answer: "heavier",
+            explain: "Heavy termina en 'y', cambia a 'ier': heavier."
+        },
+        {
+            id: 30,
+            q: "Spelling Check: Choose the correctly spelled comparative form of 'thin':",
+            type: "radio",
+            options: ["thiner", "thinner", "thinier", "more thin"],
+            answer: "thinner",
+            explain: "Thin es CVC (consonante-vocal-consonante), dobla la 'n': thinner."
+        },
+        {
+            id: 31,
+            q: "Grammar Complex: Fill in: 'This abstract painting is the ______ (creative) work in the entire gallery.'",
+            type: "text",
+            answer: "most creative",
+            explain: "Superlativo de adjetivo largo: 'most creative'."
+        },
+        {
+            id: 32,
+            q: "Grammar Complex: Fill in: 'The frame of this portrait is the ______ (dark) part of the room.'",
+            type: "text",
+            answer: "darkest",
+            explain: "Superlativo de adjetivo corto: 'darkest'."
+        },
+        {
+            id: 33,
+            q: "Reading Deep-Dive: According to the text, why did Clara think the lion sculpture was special?",
+            type: "radio",
+            options: [
+                "Because it was silly and cheap",
+                "Because it was more impressive than the paintings",
+                "Because it was in the background of a picture",
+                "Because it was painted by Leo"
+            ],
+            answer: "Because it was more impressive than the paintings",
+            explain: "Clara dijo que era 'more impressive than the paintings'."
+        },
+        {
+            id: 34,
+            q: "Reading True/False Justification: 'The sculpture was cheap to produce.' True or False?",
+            type: "radio",
+            options: ["True", "False"],
+            answer: "False",
+            explain: "Falso: el texto indica que 'it was very expensive to make'."
+        },
+        {
+            id: 35,
+            q: "Vocabulary Context: Complete: 'A painting without modern ideas, painted like 200 years ago, is described as ______.'",
+            type: "radio",
+            options: ["modern", "traditional", "bright", "cheap"],
+            answer: "traditional",
+            explain: "El arte de estilo de hace siglos se califica como 'traditional'."
+        },
+        {
+            id: 36,
+            q: "Vocabulary Context: If a painting causes people to laugh because it makes no sense, it is ______.",
+            type: "radio",
+            options: ["silly", "expensive", "dark", "traditional"],
+            answer: "silly",
+            explain: "Silly se aplica a algo tonto o absurdo."
+        },
+        {
+            id: 37,
+            q: "Writing Correction: Correct this sentence: 'The stars in the background is bright.' Write the correct verb:",
+            type: "text",
+            answer: "are",
+            explain: "'The stars' es plural, requiere el verbo 'are'."
+        },
+        {
+            id: 38,
+            q: "Writing Correction: Correct this sentence: 'This painting is more good than that sculpture.' Write the correct word:",
+            type: "text",
+            answer: "better",
+            explain: "'More good' es incorrecto; se debe usar 'better'."
+        },
+        {
+            id: 39,
+            q: "Writing Correction: Correct this sentence: 'In the foreground has a small tree.' Write the correct structure (2 words):",
+            type: "text",
+            answer: "there is",
+            explain: "Para decir 'hay' en singular se usa 'there is' (no 'has')."
+        },
+        {
+            id: 40,
+            q: "Adjective Classification: Which of these adjectives forms comparatives with 'MORE'?",
+            type: "radio",
+            options: ["bright", "dark", "expensive", "cheap"],
+            answer: "expensive",
+            explain: "Expensive tiene 3 sílabas, por lo que requiere 'more'."
+        },
+        {
+            id: 41,
+            q: "Adjective Classification: Which of these adjectives forms comparatives with '-ER'?",
+            type: "radio",
+            options: ["traditional", "creative", "bright", "horrible"],
+            answer: "bright",
+            explain: "Bright es adjetivo corto de 1 sílaba -> brighter."
+        },
+        {
+            id: 42,
+            q: "Escribe en inglés la forma comparativa de 'horrible':",
+            type: "text",
+            answer: "more horrible",
+            explain: "More horrible."
+        },
+        {
+            id: 43,
+            q: "Escribe en inglés la forma comparativa de 'cheap':",
+            type: "text",
+            answer: "cheaper",
+            explain: "Cheaper."
+        },
+        {
+            id: 44,
+            q: "Escribe en inglés la forma comparativa de 'bad':",
+            type: "text",
+            answer: "worse",
+            explain: "Worse."
+        },
+        {
+            id: 45,
+            q: "Escribe en inglés la forma comparativa de 'good':",
+            type: "text",
+            answer: "better",
+            explain: "Better."
+        },
+        {
+            id: 46,
+            q: "Syntax Practice: Choose the correct question structure:",
+            type: "radio",
+            options: [
+                "Which painting is more creative?",
+                "Which painting more creative is?",
+                "Which is painting creative more?",
+                "Painting which is more creative?"
+            ],
+            answer: "Which painting is more creative?",
+            explain: "Estructura interrogativa correcta: Which + noun + is + comparative?"
+        },
+        {
+            id: 47,
+            q: "Syntax Practice: Choose the correct sentence:",
+            type: "radio",
+            options: [
+                "In my opinion, abstract art is weirder than traditional art.",
+                "In my opinion, abstract art is more weirder than traditional art.",
+                "In my opinion, abstract art is weirder that traditional art.",
+                "In my opinion, abstract art is weirdest than traditional art."
+            ],
+            answer: "In my opinion, abstract art is weirder than traditional art.",
+            explain: "Weirder + than es la forma correcta (sin doble comparativo)."
+        },
+        {
+            id: 48,
+            q: "Reading Synonym Check: In the text, which word means 'very impressive/fantastic'?",
+            type: "radio",
+            options: ["weird", "silly", "fantastic", "dark"],
+            answer: "fantastic",
+            explain: "En la frase final: 'it was a fantastic day'."
+        },
+        {
+            id: 49,
+            q: "Examen Strategy: If you don't know a word in the Reading text, what should you do?",
+            type: "radio",
+            options: [
+                "Stop writing and leave it blank",
+                "Read the whole sentence and look for context clues",
+                "Write 'I don't know' in English",
+                "Invent a new word"
+            ],
+            answer: "Read the whole sentence and look for context clues",
+            explain: "Estrategia de comprensión lectora: deducir el significado por el contexto."
+        },
+        {
+            id: 50,
+            q: "Richmond Method Summary: What are the key areas evaluated in Unit 2?",
+            type: "radio",
+            options: [
+                "Art terms (foreground/background), Adjectives (bright/dark/creative), Comparatives (-er / more... than) & Irregulars (better/worse)",
+                "Only past simple verbs",
+                "Maths equations and numbers",
+                "Geography capitals"
+            ],
+            answer: "Art terms (foreground/background), Adjectives (bright/dark/creative), Comparatives (-er / more... than) & Irregulars (better/worse)",
+            explain: "Son los pilares fundamentales del temario de la Unit 2 'Listen to your art'."
+        }
+    ];
+
+    function renderQuestions(questions, containerId) {
+        const container = document.getElementById(containerId);
+        questions.forEach(q => {
+            const card = document.createElement('div');
+            card.className = 'question-card';
+            card.id = `q_card_${q.id}`;
+
+            let html = `<p class="q-text">${q.id}. ${q.q}</p>`;
+
+            if (q.type === 'radio') {
+                html += `<div class="options-group">`;
+                q.options.forEach(opt => {
+                    html += `
+                        <label class="option-label">
+                            <input type="radio" name="q_${q.id}" value="${opt}">
+                            ${opt}
+                        </label>
+                    `;
+                });
+                html += `</div>`;
+            } else if (q.type === 'text') {
+                html += `<input type="text" name="q_${q.id}" placeholder="Escribe tu respuesta aquí en inglés...">`;
+            }
+
+            card.innerHTML = html;
+            container.appendChild(card);
+        });
+    }
+
+    renderQuestions(questionsBlock1, 'block1');
+    renderQuestions(questionsBlock2, 'block2');
+
+    function evaluateQuiz() {
+        clearInterval(timerInterval);
+        const allQuestions = [...questionsBlock1, ...questionsBlock2];
+        let score = 0;
+        const feedbackContainer = document.getElementById('feedbackContainer');
+        feedbackContainer.innerHTML = '';
+
+        allQuestions.forEach(q => {
+            const field = document.forms['quizForm'][`q_${q.id}`];
+            let userAns = '';
+
+            if (q.type === 'radio') {
+                userAns = field.value || '';
+            } else if (q.type === 'text') {
+                userAns = field.value.trim();
+            }
+
+            const isCorrect = userAns.toLowerCase() === q.answer.toLowerCase();
+            if (isCorrect) score++;
+
+            const fbDiv = document.createElement('div');
+            fbDiv.className = `feedback ${isCorrect ? 'correct' : 'incorrect'}`;
+            fbDiv.innerHTML = `
+                <strong>Pregunta ${q.id}:</strong> ${q.q}<br>
+                <em>Tu respuesta:</em> ${userAns || '(Sin responder)'}<br>
+                <em>Respuesta correcta:</em> <strong>${q.answer}</strong><br>
+                💡 <em>Explicación:</em> ${q.explain}
+            `;
+            feedbackContainer.appendChild(fbDiv);
+        });
+
+        const mark10 = ((score / 50) * 10).toFixed(2);
+        document.getElementById('scoreText').textContent = `Nota Final: ${mark10} / 10 (${score} aciertos de 50 preguntas)`;
+        document.getElementById('timeText').textContent = `Tiempo transcurrido: ${timerElem.textContent.replace('⏱️ ', '')}`;
+        document.getElementById('resultsBox').style.display = 'block';
+        window.scrollTo({ top: document.getElementById('resultsBox').offsetTop - 70, behavior: 'smooth' });
+    }
+</script>
+</body>
+</html>
