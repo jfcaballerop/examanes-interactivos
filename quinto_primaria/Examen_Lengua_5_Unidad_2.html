@@ -1,0 +1,336 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Examen de Lengua · Unidad 2 · 5.º Primaria</title>
+    <style>
+      :root {
+        --primary: #2563eb;
+        --primary-dark: #1d4ed8;
+        --success: #16a34a;
+        --danger: #dc2626;
+        --bg-body: #f8fafc;
+        --card-bg: #ffffff;
+        --text-main: #0f172a;
+        --text-muted: #64748b;
+        --border: #cbd5e1;
+      }
+      * { box-sizing: border-box; }
+      body {
+        margin: 0;
+        padding-bottom: 60px;
+        background: var(--bg-body);
+        color: var(--text-main);
+        font: 16px/1.6 Inter, system-ui, -apple-system, sans-serif;
+      }
+      .sticky-header {
+        position: sticky;
+        top: 0;
+        z-index: 10;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 14px 24px;
+        background: #1e293b;
+        color: white;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, .15);
+      }
+      .sticky-header h1 { margin: 0; font-size: 1.15rem; }
+      .timer-badge {
+        flex: 0 0 auto;
+        padding: 6px 16px;
+        border: 1px solid #334155;
+        border-radius: 20px;
+        background: #0f172a;
+        color: #38bdf8;
+        font: 700 1.1rem monospace;
+      }
+      .container { max-width: 860px; margin: 28px auto; padding: 0 16px; }
+      .back-link {
+        display: inline-block;
+        margin-bottom: 16px;
+        padding: 8px 12px;
+        border: 1px solid var(--primary);
+        border-radius: 6px;
+        color: var(--primary-dark);
+        font-weight: 600;
+        text-decoration: none;
+      }
+      .back-link:hover, .back-link:focus-visible { background: #dbeafe; }
+      .exam-info {
+        margin-bottom: 22px;
+        padding: 24px;
+        border-radius: 12px;
+        background: linear-gradient(135deg, #1e3a8a, #2563eb);
+        color: white;
+      }
+      .exam-info h2 { margin: 0 0 8px; font-size: 1.6rem; }
+      .exam-info p { margin: 0; }
+      .instructions {
+        margin-bottom: 28px;
+        padding: 16px;
+        border-left: 5px solid #00a4ef;
+        border-radius: 4px;
+        background: #e3f2fd;
+      }
+      .section-header {
+        margin: 32px 0 16px;
+        padding-bottom: 8px;
+        border-bottom: 3px solid var(--primary);
+        color: var(--primary-dark);
+        font-size: 1.3rem;
+      }
+      .question-card {
+        margin-bottom: 18px;
+        padding: 20px;
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        background: var(--card-bg);
+        box-shadow: 0 2px 4px rgba(0, 0, 0, .03);
+      }
+      .question-title { margin: 0 0 12px; font-size: 1.05rem; font-weight: 600; }
+      .q-num {
+        display: inline-block;
+        margin-right: 8px;
+        padding: 2px 8px;
+        border-radius: 4px;
+        background: #e0e7ff;
+        color: #3730a3;
+        font-size: .9rem;
+      }
+      .options-group { display: flex; flex-direction: column; gap: 10px; }
+      .option-label {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        padding: 10px 14px;
+        border: 1px solid #e2e8f0;
+        border-radius: 6px;
+        cursor: pointer;
+      }
+      .option-label:hover { background: #f1f5f9; }
+      .option-label input { width: 18px; height: 18px; margin-top: 3px; accent-color: var(--primary); }
+      .submit-section, .results-box {
+        margin-top: 32px;
+        padding: 24px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        background: white;
+      }
+      .submit-section { text-align: center; }
+      .btn-submit {
+        padding: 14px 30px;
+        border: 0;
+        border-radius: 8px;
+        background: var(--primary);
+        color: white;
+        font: inherit;
+        font-weight: 600;
+        cursor: pointer;
+      }
+      .btn-submit:hover { background: var(--primary-dark); }
+      .results-box h2 { margin-top: 0; }
+      .feedback { margin: 14px 0; padding: 14px; border-radius: 8px; }
+      .feedback.correct { border-left: 4px solid var(--success); background: #f0fdf4; }
+      .feedback.incorrect { border-left: 4px solid var(--danger); background: #fef2f2; }
+      .feedback p { margin: 4px 0; }
+      .category-results { margin: 12px 0 24px; padding-left: 20px; }
+      [hidden] { display: none !important; }
+      @media (max-width: 560px) {
+        .sticky-header { padding: 12px 16px; }
+        .sticky-header h1 { font-size: 1rem; }
+        .timer-badge { padding: 5px 10px; font-size: 1rem; }
+        .exam-info { padding: 20px; }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="sticky-header">
+      <h1>Lengua Castellana · 5.º Primaria</h1>
+      <div class="timer-badge" id="timer" aria-live="off">⏱️ 00:00</div>
+    </header>
+    <main class="container">
+      <a class="back-link" href="../index.html">← Volver al índice</a>
+      <section class="exam-info">
+        <h2>Unidad 2 · Santillana</h2>
+        <p>Examen interactivo de Lengua Castellana · 5.º de Primaria</p>
+      </section>
+      <section class="instructions">
+        <strong>Instrucciones:</strong> El examen contiene 50 preguntas aleatorias.
+        Cada acierto vale 0,2 puntos; los errores y las preguntas sin responder no restan.
+        Al entregar, verás la nota, el tiempo y la corrección explicada de cada pregunta.
+      </section>
+      <form id="examForm" onsubmit="return false">
+        <h2 class="section-header">Bloque 1 · Preguntas 1–25</h2>
+        <div id="block1"></div>
+        <h2 class="section-header">Bloque 2 · Preguntas 26–50</h2>
+        <div id="block2"></div>
+        <div class="submit-section">
+          <button type="button" class="btn-submit" id="submitButton">Entregar y corregir examen</button>
+        </div>
+      </form>
+      <section class="results-box" id="resultsBox" hidden>
+        <h2 id="scoreText"></h2>
+        <p id="timeText"></p>
+        <h3>Resultados por tema</h3>
+        <ul class="category-results" id="categoryResults"></ul>
+        <h3>Corrección y explicaciones</h3>
+        <div id="feedbackContainer"></div>
+        <a class="back-link" href="../index.html">Volver al índice</a>
+      </section>
+    </main>
+    <script>const bank=[{"q": "¿Qué es una noticia?", "a": "Un texto que informa de un hecho de interés", "opts": ["Un texto que informa de un hecho de interés", "Un poema", "Una receta", "Un cuento fantástico"], "why": "La noticia informa sobre hechos de interés.", "cat": "Noticia", "level": 0, "id": 1}, {"q": "¿Cómo se llama el título de una noticia?", "a": "Titular", "opts": ["Titular", "Desenlace", "Verso", "Diálogo"], "why": "El titular presenta la información principal.", "cat": "Noticia", "level": 0, "id": 2}, {"q": "¿Qué transportaba Roshan?", "a": "Libros", "opts": ["Libros", "Alimentos", "Juguetes", "Medicinas"], "why": "Roshan llevaba libros a los pueblos.", "cat": "Noticia", "level": 0, "id": 3}, {"q": "¿En qué país trabajaba Roshan?", "a": "Pakistán", "opts": ["Pakistán", "España", "Egipto", "México"], "why": "El proyecto se desarrolló en Pakistán.", "cat": "Noticia", "level": 0, "id": 4}, {"q": "¿Qué aparato repartía libros en Virginia?", "a": "Un dron", "opts": ["Un dron", "Un tren", "Un camello", "Un barco"], "why": "La segunda noticia trata del reparto con drones.", "cat": "Noticia", "level": 1, "id": 5}, {"q": "¿Qué pregunta periodística identifica el lugar?", "a": "¿Dónde?", "opts": ["¿Dónde?", "¿Quién?", "¿Cuándo?", "¿Qué?"], "why": "Dónde pregunta por el lugar.", "cat": "Noticia", "level": 1, "id": 6}, {"q": "¿Qué pregunta identifica el momento?", "a": "¿Cuándo?", "opts": ["¿Cuándo?", "¿Cómo?", "¿Dónde?", "¿Quién?"], "why": "Cuándo pregunta por el tiempo.", "cat": "Noticia", "level": 1, "id": 7}, {"q": "¿Qué provocó el cierre de las escuelas en las lecturas?", "a": "La pandemia", "opts": ["La pandemia", "Las vacaciones", "Una nevada", "Una huelga"], "why": "La pandemia obligó a cerrar centros escolares.", "cat": "Noticia", "level": 1, "id": 8}, {"q": "¿Quién impulsó la biblioteca camello?", "a": "La directora de un centro escolar", "opts": ["La directora de un centro escolar", "Un piloto", "Un alcalde", "Un veterinario"], "why": "La directora puso en marcha el proyecto.", "cat": "Noticia", "level": 2, "id": 9}, {"q": "¿En qué se parecen las dos noticias del libro?", "a": "Facilitan la lectura durante la pandemia", "opts": ["Facilitan la lectura durante la pandemia", "Ocurren en el mismo país", "Utilizan animales", "Tratan de deportes"], "why": "Ambas acercan libros a estudiantes.", "cat": "Noticia", "level": 2, "id": 10}, {"q": "¿Qué titular informa mejor sobre una biblioteca móvil?", "a": "Una biblioteca móvil visita cinco pueblos", "opts": ["Una biblioteca móvil visita cinco pueblos", "¡Qué cosas!", "Mi día favorito", "Había una vez un libro"], "why": "Un buen titular resume el hecho concreto.", "cat": "Noticia", "level": 2, "id": 11}, {"q": "¿Qué dato responde a quién en «El lunes, Ana ganó una carrera en Madrid»?", "a": "Ana", "opts": ["Ana", "El lunes", "Madrid", "Una carrera"], "why": "Ana es la protagonista.", "cat": "Noticia", "level": 2, "id": 12}, {"q": "¿Qué dato responde a qué sucedió en esa oración?", "a": "Ana ganó una carrera", "opts": ["Ana ganó una carrera", "El lunes", "Madrid", "Ana"], "why": "El hecho es ganar la carrera.", "cat": "Noticia", "level": 3, "id": 13}, {"q": "¿Por qué era útil un camello para llevar libros?", "a": "Puede atravesar terrenos desérticos", "opts": ["Puede atravesar terrenos desérticos", "Puede volar", "Lee los libros", "Necesita carreteras asfaltadas"], "why": "Está adaptado al desierto.", "cat": "Noticia", "level": 3, "id": 14}, {"q": "¿Qué diferencia esencial hay entre ambas lecturas?", "a": "El medio de transporte", "opts": ["El medio de transporte", "La finalidad de acercar libros", "El cierre de centros", "El interés por la lectura"], "why": "Una usa un animal y otra tecnología.", "cat": "Noticia", "level": 3, "id": 15}, {"q": "¿Qué es mejor para comprobar una noticia?", "a": "Consultar varias fuentes fiables", "opts": ["Consultar varias fuentes fiables", "Creer cualquier mensaje", "Mirar solo una foto", "Contar los comentarios"], "why": "Contrastar fuentes ayuda a verificar hechos.", "cat": "Noticia", "level": 3, "id": 16}, {"q": "¿Qué frase expresa una opinión y no un hecho comprobable?", "a": "Es la biblioteca más maravillosa del mundo", "opts": ["Es la biblioteca más maravillosa del mundo", "La biblioteca abrió el lunes", "Llegaron veinte libros", "El centro está en Madrid"], "why": "Maravillosa expresa una valoración.", "cat": "Noticia", "level": 4, "id": 17}, {"q": "«El martes, el colegio abrió una biblioteca en el patio». ¿Qué dato falta para saber el motivo?", "a": "Por qué abrió la biblioteca", "opts": ["Por qué abrió la biblioteca", "Dónde abrió", "Cuándo abrió", "Quién abrió"], "why": "No se indica la causa.", "cat": "Noticia", "level": 4, "id": 18}, {"q": "¿Qué titular es más fiel a «Los alumnos recogieron 200 libros para donar»?", "a": "Escolares reúnen 200 libros para una donación", "opts": ["Escolares reúnen 200 libros para una donación", "El colegio vende 200 libros", "Los alumnos reciben 200 juguetes", "Una biblioteca cierra"], "why": "El titular debe conservar los hechos.", "cat": "Noticia", "level": 4, "id": 19}, {"q": "¿Qué conclusión se deduce de las dos lecturas?", "a": "Hay distintas formas de acercar la educación a lugares o personas con dificultades de acceso", "opts": ["Hay distintas formas de acercar la educación a lugares o personas con dificultades de acceso", "Todos los niños tienen drones", "Los camellos sustituyen siempre a los profesores", "Las bibliotecas ya no son necesarias"], "why": "Ambas muestran soluciones de acceso a la lectura.", "cat": "Noticia", "level": 4, "id": 20}, {"q": "¿Qué sílaba se pronuncia con más fuerza?", "a": "Tónica", "opts": ["Tónica", "Átona", "Final siempre", "Inicial siempre"], "why": "La tónica recibe el acento de voz.", "cat": "Acentuación", "level": 0, "id": 21}, {"q": "¿Cuál es la sílaba tónica de mesa?", "a": "me", "opts": ["me", "sa", "mes", "a"], "why": "ME-sa.", "cat": "Acentuación", "level": 0, "id": 22}, {"q": "¿Cuál es la sílaba tónica de papel?", "a": "pel", "opts": ["pel", "pa", "pe", "el"], "why": "pa-PEL.", "cat": "Acentuación", "level": 0, "id": 23}, {"q": "¿Dónde está la tónica de una aguda?", "a": "Última sílaba", "opts": ["Última sílaba", "Penúltima", "Antepenúltima", "Siempre primera"], "why": "Es la última.", "cat": "Acentuación", "level": 0, "id": 24}, {"q": "¿Dónde está la tónica de una llana?", "a": "Penúltima", "opts": ["Penúltima", "Última", "Antepenúltima", "Nunca tiene"], "why": "Es la penúltima.", "cat": "Acentuación", "level": 0, "id": 25}, {"q": "¿Dónde está la tónica de una esdrújula?", "a": "Antepenúltima", "opts": ["Antepenúltima", "Última", "Penúltima", "Siempre segunda"], "why": "Es la antepenúltima.", "cat": "Acentuación", "level": 0, "id": 26}, {"q": "¿Cuál es aguda?", "a": "Reloj", "opts": ["Reloj", "Mesa", "Música", "Árbol"], "why": "re-LOJ.", "cat": "Acentuación", "level": 1, "id": 27}, {"q": "¿Cuál es llana?", "a": "Ventana", "opts": ["Ventana", "Café", "Pájaro", "Camión"], "why": "ven-TA-na.", "cat": "Acentuación", "level": 1, "id": 28}, {"q": "¿Cuál es esdrújula?", "a": "Teléfono", "opts": ["Teléfono", "Papel", "Silla", "Limón"], "why": "te-LÉ-fo-no.", "cat": "Acentuación", "level": 1, "id": 29}, {"q": "¿Qué palabras llevan siempre tilde?", "a": "Esdrújulas", "opts": ["Esdrújulas", "Agudas", "Llanas", "Todas"], "why": "Las esdrújulas siempre se acentúan.", "cat": "Acentuación", "level": 1, "id": 30}, {"q": "¿Cuándo llevan tilde las agudas según la regla general?", "a": "Si terminan en vocal, n o s", "opts": ["Si terminan en vocal, n o s", "Si terminan en cualquier consonante", "Siempre", "Nunca"], "why": "Esa es la regla general de las agudas.", "cat": "Acentuación", "level": 1, "id": 31}, {"q": "¿Cuándo llevan tilde las llanas según la regla general?", "a": "Si terminan en consonante distinta de n o s", "opts": ["Si terminan en consonante distinta de n o s", "Si terminan en vocal", "Siempre", "Nunca"], "why": "Esa es la regla general de las llanas.", "cat": "Acentuación", "level": 1, "id": 32}, {"q": "¿Cuál está bien escrita?", "a": "Camión", "opts": ["Camión", "Camion", "Cámion", "Camíon"], "why": "Aguda terminada en n.", "cat": "Acentuación", "level": 2, "id": 33}, {"q": "¿Cuál está bien escrita?", "a": "Lápiz", "opts": ["Lápiz", "Lapiz", "Lapíz", "Lápíz"], "why": "Llana terminada en z.", "cat": "Acentuación", "level": 2, "id": 34}, {"q": "¿Cuál está bien escrita?", "a": "Brújula", "opts": ["Brújula", "Brujula", "Brujúla", "Brujulá"], "why": "Es esdrújula.", "cat": "Acentuación", "level": 2, "id": 35}, {"q": "¿Por qué sofá lleva tilde?", "a": "Es aguda terminada en vocal", "opts": ["Es aguda terminada en vocal", "Es llana", "Es esdrújula", "Termina en consonante"], "why": "Las agudas terminadas en vocal llevan tilde.", "cat": "Acentuación", "level": 2, "id": 36}, {"q": "¿Por qué pared no lleva tilde?", "a": "Es aguda terminada en d", "opts": ["Es aguda terminada en d", "Es llana terminada en vocal", "Es esdrújula", "Tiene dos sílabas"], "why": "La d no es n ni s.", "cat": "Acentuación", "level": 2, "id": 37}, {"q": "¿Por qué césped lleva tilde?", "a": "Es llana terminada en d", "opts": ["Es llana terminada en d", "Es aguda terminada en d", "Es esdrújula", "Termina en vocal"], "why": "Las llanas terminadas en d llevan tilde.", "cat": "Acentuación", "level": 2, "id": 38}, {"q": "¿Cuál es la intrusa por su acentuación: melón, cantar, reloj, árbol?", "a": "Árbol", "opts": ["Árbol", "Melón", "Cantar", "Reloj"], "why": "Árbol es llana; las demás son agudas.", "cat": "Acentuación", "level": 3, "id": 39}, {"q": "¿Cuál es la intrusa: lámpara, médico, rápido, camisa?", "a": "Camisa", "opts": ["Camisa", "Lámpara", "Médico", "Rápido"], "why": "Camisa es llana.", "cat": "Acentuación", "level": 3, "id": 40}, {"q": "¿Qué grupo contiene solo agudas?", "a": "Compás, pared, café", "opts": ["Compás, pared, café", "Mesa, café, reloj", "Música, limón, papel", "Árbol, lápiz, casa"], "why": "Las tres tienen tónica final.", "cat": "Acentuación", "level": 3, "id": 41}, {"q": "¿Qué grupo contiene solo llanas?", "a": "Fácil, mochila, césped", "opts": ["Fácil, mochila, césped", "Café, árbol, mesa", "Pájaro, silla, papel", "Reloj, limón, sofá"], "why": "Las tres tienen tónica penúltima.", "cat": "Acentuación", "level": 3, "id": 42}, {"q": "¿Qué grupo contiene solo esdrújulas?", "a": "Océano, sábado, número", "opts": ["Océano, sábado, número", "Árbol, música, café", "Papel, lámpara, médico", "Mesa, rápido, silla"], "why": "Las tres tienen tónica antepenúltima.", "cat": "Acentuación", "level": 3, "id": 43}, {"q": "¿Qué oración está bien acentuada?", "a": "El médico compró un lápiz.", "opts": ["El médico compró un lápiz.", "El medico compró un lápiz.", "El médico compro un lápiz.", "El médico compró un lapiz."], "why": "Médico, compró y lápiz necesitan tilde.", "cat": "Acentuación", "level": 3, "id": 44}, {"q": "¿Qué palabra necesita tilde: mantel, examen, joven, tunel?", "a": "Túnel", "opts": ["Túnel", "Mantel", "Examen", "Joven"], "why": "Túnel es llana terminada en l.", "cat": "Acentuación", "level": 4, "id": 45}, {"q": "¿Qué palabra cambia a esdrújula al pasar al plural?", "a": "Examen", "opts": ["Examen", "Papel", "Reloj", "Mesa"], "why": "Examen pasa a exámenes.", "cat": "Acentuación", "level": 4, "id": 46}, {"q": "¿Cuál es la escritura correcta del plural de joven?", "a": "Jóvenes", "opts": ["Jóvenes", "Jovenes", "Jovénes", "Jovenés"], "why": "Jóvenes es esdrújula.", "cat": "Acentuación", "level": 4, "id": 47}, {"q": "¿Qué opción corrige todas las tildes de «El sabado visite un jardin»?", "a": "El sábado visité un jardín.", "opts": ["El sábado visité un jardín.", "El sabado visité un jardín.", "El sábado visite un jardín.", "El sábado visité un jardin."], "why": "Sábado es esdrújula; visité y jardín son agudas.", "cat": "Acentuación", "level": 4, "id": 48}, {"q": "¿Qué palabra cumple: llana, tres sílabas y sin tilde?", "a": "Pelota", "opts": ["Pelota", "Corazón", "Pájaro", "Lápiz"], "why": "pe-LO-ta tiene tres sílabas y acaba en vocal.", "cat": "Acentuación", "level": 4, "id": 49}, {"q": "¿Qué pareja tiene la misma sílaba tónica por posición, pero solo una lleva tilde?", "a": "Papel y limón", "opts": ["Papel y limón", "Música y mesa", "Árbol y café", "Pájaro y médico"], "why": "Papel y limón son agudas; solo limón termina en n.", "cat": "Acentuación", "level": 4, "id": 50}, {"q": "¿Qué acompañan los determinantes?", "a": "Sustantivos", "opts": ["Sustantivos", "Verbos", "Adverbios", "Preposiciones"], "why": "Concretan el significado del sustantivo.", "cat": "Determinantes", "level": 0, "id": 51}, {"q": "¿Cuál es un artículo determinado?", "a": "La", "opts": ["La", "Una", "Mi", "Tres"], "why": "El, la, los y las son determinados.", "cat": "Determinantes", "level": 0, "id": 52}, {"q": "¿Cuál es un artículo indeterminado?", "a": "Unos", "opts": ["Unos", "Los", "Estas", "Mis"], "why": "Un, una, unos y unas son indeterminados.", "cat": "Determinantes", "level": 0, "id": 53}, {"q": "¿Qué artículo acompaña a «libros» si son conocidos?", "a": "Los", "opts": ["Los", "Las", "La", "Un"], "why": "Libros es masculino plural.", "cat": "Determinantes", "level": 0, "id": 54}, {"q": "¿Qué artículo indeterminado acompaña a «mesa»?", "a": "Una", "opts": ["Una", "Un", "Unos", "Las"], "why": "Mesa es femenino singular.", "cat": "Determinantes", "level": 0, "id": 55}, {"q": "¿Qué determinante aparece en «mi mochila»?", "a": "Mi", "opts": ["Mi", "Mochila", "Mi mochila", "Ninguno"], "why": "Mi es posesivo.", "cat": "Determinantes", "level": 0, "id": 56}, {"q": "¿Qué determinante aparece en «tres gatos»?", "a": "Tres", "opts": ["Tres", "Gatos", "Los", "Ninguno"], "why": "Tres es numeral.", "cat": "Determinantes", "level": 1, "id": 57}, {"q": "¿Qué determinante aparece en «aquella casa»?", "a": "Aquella", "opts": ["Aquella", "Casa", "La", "Ninguno"], "why": "Aquella es demostrativo.", "cat": "Determinantes", "level": 1, "id": 58}, {"q": "¿Qué determinante aparece en «algunos cuentos»?", "a": "Algunos", "opts": ["Algunos", "Cuentos", "Un", "Ninguno"], "why": "Algunos es indefinido.", "cat": "Determinantes", "level": 1, "id": 59}, {"q": "¿Qué artículo indica algo conocido?", "a": "El", "opts": ["El", "Un", "Una", "Unos"], "why": "El es determinado.", "cat": "Determinantes", "level": 1, "id": 60}, {"q": "¿Qué indica el artículo normalmente?", "a": "Género y número del sustantivo", "opts": ["Género y número del sustantivo", "Tiempo verbal", "Sílaba tónica", "Lugar de nacimiento"], "why": "Concuerda en género y número.", "cat": "Determinantes", "level": 1, "id": 61}, {"q": "¿Cómo se analiza «las»?", "a": "Determinado, femenino, plural", "opts": ["Determinado, femenino, plural", "Indeterminado, femenino, plural", "Determinado, masculino, plural", "Determinado, femenino, singular"], "why": "Las es femenino plural determinado.", "cat": "Determinantes", "level": 1, "id": 62}, {"q": "¿Cómo se analiza «un»?", "a": "Indeterminado, masculino, singular", "opts": ["Indeterminado, masculino, singular", "Determinado, masculino, singular", "Indeterminado, femenino, singular", "Indeterminado, masculino, plural"], "why": "Un es masculino singular indeterminado.", "cat": "Determinantes", "level": 2, "id": 63}, {"q": "¿Qué tipo de determinante es «nuestro» en «nuestro colegio»?", "a": "Posesivo", "opts": ["Posesivo", "Numeral", "Artículo", "Indefinido"], "why": "Indica posesión o pertenencia.", "cat": "Determinantes", "level": 2, "id": 64}, {"q": "¿Qué tipo de determinante es «esos» en «esos zapatos»?", "a": "Demostrativo", "opts": ["Demostrativo", "Posesivo", "Numeral", "Artículo"], "why": "Señala distancia.", "cat": "Determinantes", "level": 2, "id": 65}, {"q": "¿Qué tipo de determinante es «varias» en «varias hojas»?", "a": "Indefinido", "opts": ["Indefinido", "Numeral exacto", "Posesivo", "Artículo"], "why": "Expresa cantidad imprecisa.", "cat": "Determinantes", "level": 2, "id": 66}, {"q": "¿Qué tipo de determinante es «cuatro» en «cuatro sillas»?", "a": "Numeral", "opts": ["Numeral", "Indefinido", "Demostrativo", "Artículo"], "why": "Expresa cantidad exacta.", "cat": "Determinantes", "level": 2, "id": 67}, {"q": "¿Cuál es la contracción de a + el?", "a": "Al", "opts": ["Al", "Del", "A el", "El a"], "why": "A y el se contraen en al.", "cat": "Determinantes", "level": 2, "id": 68}, {"q": "¿Cuál es la contracción de de + el?", "a": "Del", "opts": ["Del", "Al", "De el", "El de"], "why": "De y el se contraen en del.", "cat": "Determinantes", "level": 3, "id": 69}, {"q": "¿Cuál está bien escrita?", "a": "Voy al parque.", "opts": ["Voy al parque.", "Voy a el parque.", "Voy del parque a el cine.", "Voy a la parque."], "why": "Se usa al ante parque.", "cat": "Determinantes", "level": 3, "id": 70}, {"q": "¿Cuál es correcta?", "a": "El agua fría", "opts": ["El agua fría", "La agua fría", "El agua frío", "Los agua fría"], "why": "Agua es femenina y empieza por a tónica.", "cat": "Determinantes", "level": 3, "id": 71}, {"q": "¿Cuál es el plural de «el águila»?", "a": "Las águilas", "opts": ["Las águilas", "Los águilas", "El águilas", "La águilas"], "why": "En plural se recupera las.", "cat": "Determinantes", "level": 3, "id": 72}, {"q": "¿Cuál es el plural de «un hacha»?", "a": "Unas hachas", "opts": ["Unas hachas", "Unos hachas", "Un hachas", "Una hachas"], "why": "Hacha es femenina.", "cat": "Determinantes", "level": 3, "id": 73}, {"q": "¿Por qué se dice «el aula»?", "a": "Aula es femenina y empieza por a tónica", "opts": ["Aula es femenina y empieza por a tónica", "Aula es masculina", "Todas las palabras con a son masculinas", "Aula es plural"], "why": "El evita el encuentro de dos aes tónicas.", "cat": "Determinantes", "level": 3, "id": 74}, {"q": "¿Cuál es correcta?", "a": "La arena caliente", "opts": ["La arena caliente", "El arena caliente", "El arena calienteo", "Los arena caliente"], "why": "Arena no empieza por a tónica.", "cat": "Determinantes", "level": 4, "id": 75}, {"q": "¿Qué oración contiene dos artículos determinados?", "a": "El perro duerme en la cama.", "opts": ["El perro duerme en la cama.", "Un perro duerme en la cama.", "Mi perro duerme en una cama.", "Dos perros duermen."], "why": "El y la son determinados.", "cat": "Determinantes", "level": 4, "id": 76}, {"q": "¿Qué oración tiene un artículo indeterminado femenino plural?", "a": "Compré unas flores.", "opts": ["Compré unas flores.", "Compré las flores.", "Compré unos libros.", "Compré una flor."], "why": "Unas es femenino plural indeterminado.", "cat": "Determinantes", "level": 4, "id": 77}, {"q": "¿Qué opción contiene un artículo y un posesivo?", "a": "La casa de mi abuela", "opts": ["La casa de mi abuela", "Tres casas grandes", "Aquellas dos casas", "Muchas casas nuevas"], "why": "La es artículo y mi posesivo.", "cat": "Determinantes", "level": 4, "id": 78}, {"q": "¿Qué género tiene «alma» en «el alma tranquila»?", "a": "Femenino", "opts": ["Femenino", "Masculino", "Neutro", "No tiene género"], "why": "El artículo especial no cambia el género.", "cat": "Determinantes", "level": 4, "id": 79}, {"q": "¿Qué oración mantiene toda la concordancia?", "a": "Las aulas amplias están abiertas.", "opts": ["Las aulas amplias están abiertas.", "Los aulas amplios están abiertos.", "El aulas amplia están abiertas.", "Las aula amplio está abiertas."], "why": "Aulas es femenino plural.", "cat": "Determinantes", "level": 4, "id": 80}, {"q": "¿Qué son los sinónimos?", "a": "Palabras de significado igual o parecido", "opts": ["Palabras de significado igual o parecido", "Palabras opuestas", "Palabras con tilde", "Palabras inventadas"], "why": "Comparten significado.", "cat": "Repaso", "level": 0, "id": 81}, {"q": "¿Qué son los antónimos?", "a": "Palabras de significado contrario", "opts": ["Palabras de significado contrario", "Palabras iguales", "Palabras esdrújulas", "Palabras compuestas"], "why": "Expresan oposición.", "cat": "Repaso", "level": 0, "id": 82}, {"q": "¿Cuál es sinónimo de alegre?", "a": "Contento", "opts": ["Contento", "Triste", "Lento", "Oscuro"], "why": "Contento expresa alegría.", "cat": "Repaso", "level": 0, "id": 83}, {"q": "¿Cuál es antónimo de alto?", "a": "Bajo", "opts": ["Bajo", "Grande", "Elevado", "Enorme"], "why": "Bajo expresa lo contrario.", "cat": "Repaso", "level": 0, "id": 84}, {"q": "¿Cuál es antónimo de entrar?", "a": "Salir", "opts": ["Salir", "Llegar", "Pasar", "Subir"], "why": "Salir es lo contrario de entrar.", "cat": "Repaso", "level": 1, "id": 85}, {"q": "¿Qué palabra debe comenzar con mayúscula?", "a": "Madrid", "opts": ["Madrid", "Mesa", "Lunes", "Enero"], "why": "Madrid es nombre propio.", "cat": "Repaso", "level": 1, "id": 86}, {"q": "¿Qué palabra es variable?", "a": "Gato", "opts": ["Gato", "Ayer", "Muy", "Con"], "why": "Gato puede cambiar a gata o gatos.", "cat": "Repaso", "level": 1, "id": 87}, {"q": "¿Qué palabra es invariable?", "a": "Ayer", "opts": ["Ayer", "Niño", "Bonita", "Cantamos"], "why": "Ayer no cambia de género ni número.", "cat": "Repaso", "level": 1, "id": 88}, {"q": "¿Cuál es una palabra compuesta?", "a": "Sacapuntas", "opts": ["Sacapuntas", "Mesa", "Papel", "Flor"], "why": "Se forma con saca y puntas.", "cat": "Repaso", "level": 2, "id": 89}, {"q": "¿Cuál es una palabra simple?", "a": "Sol", "opts": ["Sol", "Paraguas", "Abrelatas", "Cumpleaños"], "why": "Sol no combina dos palabras.", "cat": "Repaso", "level": 2, "id": 90}, {"q": "¿Cuál es sinónimo de veloz?", "a": "Rápido", "opts": ["Rápido", "Pesado", "Lento", "Quieto"], "why": "Veloz y rápido tienen significado parecido.", "cat": "Repaso", "level": 2, "id": 91}, {"q": "¿Cuál es antónimo de tranquilo?", "a": "Nervioso", "opts": ["Nervioso", "Sereno", "Calmado", "Relajado"], "why": "Nervioso expresa lo contrario.", "cat": "Repaso", "level": 2, "id": 92}, {"q": "¿Qué oración usa correctamente las mayúsculas?", "a": "El martes viajamos a Toledo.", "opts": ["El martes viajamos a Toledo.", "El Martes viajamos a toledo.", "el martes viajamos a Toledo.", "El martes viajamos a toledo."], "why": "Inicio y nombre propio con mayúscula.", "cat": "Repaso", "level": 3, "id": 93}, {"q": "¿Qué parte es la raíz de «panadero»?", "a": "pan", "opts": ["pan", "adero", "ero", "dero"], "why": "Pan aporta el significado básico.", "cat": "Repaso", "level": 3, "id": 94}, {"q": "¿Qué morfema indica plural en «gatos»?", "a": "s", "opts": ["s", "gat", "o", "ga"], "why": "La s marca el plural.", "cat": "Repaso", "level": 3, "id": 95}, {"q": "¿Qué palabra contiene un prefijo?", "a": "Deshacer", "opts": ["Deshacer", "Mesa", "Flor", "Papel"], "why": "Des- se añade delante de hacer.", "cat": "Repaso", "level": 3, "id": 96}, {"q": "¿Qué palabra contiene un sufijo derivativo?", "a": "Florero", "opts": ["Florero", "Flores", "Flor", "Sol"], "why": "-ero forma una palabra nueva.", "cat": "Repaso", "level": 4, "id": 97}, {"q": "¿Qué pareja pertenece a la misma familia de palabras?", "a": "Pan y panadería", "opts": ["Pan y panadería", "Mar y mesa", "Sol y silla", "Papel y pared"], "why": "Comparten raíz y significado.", "cat": "Repaso", "level": 4, "id": 98}, {"q": "¿Qué grupo contiene solo palabras invariables?", "a": "Ayer, muy, con", "opts": ["Ayer, muy, con", "Gato, ayer, mesa", "Niños, con, alto", "Bonita, muy, casas"], "why": "Ayer, muy y con no varían.", "cat": "Repaso", "level": 4, "id": 99}, {"q": "¿Qué análisis de «niñitas» es correcto?", "a": "niñ- raíz, -it- diminutivo, -a- femenino, -s plural", "opts": ["niñ- raíz, -it- diminutivo, -a- femenino, -s plural", "niñ- plural, -itas raíz", "niñitas no tiene morfemas", "ni- prefijo, ñitas raíz"], "why": "La raíz aporta significado y los morfemas añaden información.", "cat": "Repaso", "level": 4, "id": 100}];
+
+      const categories = ["Noticia", "Acentuación", "Determinantes", "Repaso"];
+      const app = document.getElementById("examForm");
+      const timerElement = document.getElementById("timer");
+      const submitButton = document.getElementById("submitButton");
+      let questionsData = [];
+      let examGraded = false;
+
+      function shuffle(items) {
+        const shuffled = [...items];
+        for (let index = shuffled.length - 1; index > 0; index--) {
+          const randomIndex = Math.floor(Math.random() * (index + 1));
+          [shuffled[index], shuffled[randomIndex]] = [shuffled[randomIndex], shuffled[index]];
+        }
+        return shuffled;
+      }
+
+      function selectExamQuestions() {
+        const selected = [];
+        for (let level = 0; level < 5; level++) {
+          const levelQuestions = [];
+          for (const category of categories) {
+            const pool = bank.filter((question) => question.level === level && question.cat === category);
+            levelQuestions.push(...shuffle(pool).slice(0, pool.length / 2));
+          }
+          selected.push(...shuffle(levelQuestions));
+        }
+        if (selected.length !== 50) {
+          throw new Error("El banco debe generar exactamente 50 preguntas por examen.");
+        }
+        return shuffle(selected).map((question, index) => ({
+          ...question,
+          id: index + 1,
+          opts: shuffle(question.opts),
+        }));
+      }
+
+      function renderQuestions() {
+        for (const question of questionsData) {
+          const container = document.getElementById(question.id <= 25 ? "block1" : "block2");
+          const card = document.createElement("div");
+          card.className = "question-card";
+
+          const title = document.createElement("p");
+          title.className = "question-title";
+          const number = document.createElement("span");
+          number.className = "q-num";
+          number.textContent = question.id;
+          title.append(number, document.createTextNode(question.q));
+
+          const options = document.createElement("div");
+          options.className = "options-group";
+          question.opts.forEach((option, index) => {
+            const label = document.createElement("label");
+            label.className = "option-label";
+            const input = document.createElement("input");
+            input.type = "radio";
+            input.name = "q_" + question.id;
+            input.id = "q_" + question.id + "_" + index;
+            input.value = option;
+            const text = document.createElement("span");
+            text.textContent = String.fromCharCode(65 + index) + ". " + option;
+            label.append(input, text);
+            options.append(label);
+          });
+          card.append(title, options);
+          container.append(card);
+        }
+      }
+
+      function getAnswer(question) {
+        const selected = document.querySelector('input[name="q_' + question.id + '"]:checked');
+        return selected ? selected.value : "";
+      }
+
+      function appendFeedbackLine(container, label, value) {
+        const line = document.createElement("p");
+        const heading = document.createElement("strong");
+        heading.textContent = label + ": ";
+        line.append(heading, document.createTextNode(value));
+        container.append(line);
+      }
+
+      function formatTime(totalSeconds) {
+        const minutes = String(Math.floor(totalSeconds / 60)).padStart(2, "0");
+        const seconds = String(totalSeconds % 60).padStart(2, "0");
+        return minutes + ":" + seconds;
+      }
+
+      function updateTimer() {
+        const elapsed = Math.floor((Date.now() - startTime) / 1000);
+        timerElement.textContent = "⏱️ " + formatTime(elapsed);
+      }
+
+      function evaluateQuiz() {
+        if (examGraded) return;
+        examGraded = true;
+        clearInterval(timerInterval);
+        updateTimer();
+
+        let score = 0;
+        let unanswered = 0;
+        const feedbackContainer = document.getElementById("feedbackContainer");
+        const categoryResults = document.getElementById("categoryResults");
+        for (const category of categories) {
+          const categoryQuestions = questionsData.filter((question) => question.cat === category);
+          const categoryScore = categoryQuestions.filter((question) => getAnswer(question) === question.a).length;
+          const item = document.createElement("li");
+          item.textContent = category + ": " + categoryScore + "/" + categoryQuestions.length;
+          categoryResults.append(item);
+        }
+
+        questionsData.forEach((question) => {
+          const userAnswer = getAnswer(question);
+          const isCorrect = userAnswer === question.a;
+          if (isCorrect) score++;
+          if (!userAnswer) unanswered++;
+
+          const feedback = document.createElement("div");
+          feedback.className = "feedback " + (isCorrect ? "correct" : "incorrect");
+          const heading = document.createElement("p");
+          const strong = document.createElement("strong");
+          strong.textContent = "Pregunta " + question.id + ": ";
+          heading.append(strong, document.createTextNode(question.q));
+          feedback.append(heading);
+          appendFeedbackLine(feedback, "Tu respuesta", userAnswer || "Sin responder");
+          appendFeedbackLine(feedback, "Respuesta correcta", question.a);
+          appendFeedbackLine(feedback, "Explicación", question.why);
+          feedbackContainer.append(feedback);
+        });
+
+        const incorrect = questionsData.length - score - unanswered;
+        const mark = ((score / questionsData.length) * 10).toFixed(2).replace(".", ",");
+        document.getElementById("scoreText").textContent = "Nota final: " + mark + " / 10";
+        document.getElementById("timeText").textContent =
+          "Tiempo empleado: " + formatTime(Math.floor((Date.now() - startTime) / 1000)) +
+          " · " + score + " aciertos · " + incorrect + " errores · " + unanswered + " sin responder";
+        document.querySelectorAll("#examForm input").forEach((input) => { input.disabled = true; });
+        document.getElementById("resultsBox").hidden = false;
+        submitButton.textContent = "REINICIAR";
+        submitButton.onclick = () => window.location.reload();
+        window.scrollTo({ top: document.getElementById("resultsBox").offsetTop - 70, behavior: "smooth" });
+      }
+
+      const startTime = Date.now();
+      const timerInterval = setInterval(updateTimer, 1000);
+      questionsData = selectExamQuestions();
+      renderQuestions();
+      submitButton.onclick = evaluateQuiz;
+    </script>
+  </body>
+</html>
